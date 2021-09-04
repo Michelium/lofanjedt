@@ -3,12 +3,37 @@
 {% block body %}
     <div class="row">
         <div class="col-12">
-            <a href="" class="btn btn-outline-success float-end">new entry</a>
+            <button type="button" class="btn btn-outline-success float-end" data-bs-toggle="modal" data-bs-target="#formModal">new entry</button>
             <h3>lofanjedt</h3>
         </div>
     </div>
     <hr>
-    <table class="table table-hover table-striped">
-
+    <table class="table table-hover table-striped" id="entries">
+        <thead>
+        <tr>
+            <th>term</th>
+            <th>plural</th>
+            <th>ipa</th>
+            <th>ipa plural</th>
+            <th>part of speech</th>
+            <th>english</th>
+            <th>information</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entry in entries %}
+            <tr>
+                <td>{{ entry.term }}</td>
+                <td>{{ entry.plural }}</td>
+                <td>{{ entry.ipa }}</td>
+                <td>{{ entry.ipaPlural }}</td>
+                <td>{{ entry.partOfSpeech }}</td>
+                <td>{{ entry.english }}</td>
+                <td>{{ entry.information }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
     </table>
+
+    {% include 'dashboard/form.html.twig' %}
 {% endblock %}
