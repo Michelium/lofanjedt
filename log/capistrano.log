@@ -1476,3 +1476,14 @@ Generating optimized autoload files
   INFO [ce956aca] Running /usr/bin/env echo "Branch master (at 9351daeec04c15711f3c21db177f88700f1ba03d) deployed as release 20210907201741 by Michel" >> ~/domains/lofanjedt.nl/revisions.log as u114524p110947@web0139.zxcs.nl
  DEBUG [ce956aca] Command: cd ~/domains/lofanjedt.nl/releases && /usr/bin/env echo "Branch master (at 9351daeec04c15711f3c21db177f88700f1ba03d) deployed as release 20210907201741 by Michel" >> ~/domains/lofanjedt.nl/revisions.log
   INFO [ce956aca] Finished in 0.598 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-09-07 22:22:17 +0200 cap prod deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [4314f8df] Running /usr/bin/env mkdir -p /home/u114524p110947/tmp as u114524p110947@web0139.zxcs.nl
+ DEBUG [4314f8df] Command: /usr/bin/env mkdir -p /home/u114524p110947/tmp
+  INFO [4314f8df] Finished in 0.918 seconds with exit status 0 (successful).
+ DEBUG Uploading /home/u114524p110947/tmp/git-ssh-7caebb512c2beb401253.sh 0.0%
+  INFO Uploading /home/u114524p110947/tmp/git-ssh-7caebb512c2beb401253.sh 100.0%
+  INFO [e5e0ad47] Running /usr/bin/env chmod 700 /home/u114524p110947/tmp/git-ssh-7caebb512c2beb401253.sh as u114524p110947@web0139.zxcs.nl
+ DEBUG [e5e0ad47] Command: /usr/bin/env chmod 700 /home/u114524p110947/tmp/git-ssh-7caebb512c2beb401253.sh
+  INFO [e5e0ad47] Finished in 0.582 seconds with exit status 0 (successful).

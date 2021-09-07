@@ -37,7 +37,7 @@
                 <td>{{ entry.information }}</td>
                 {% if app.user.granted('ROLE_ADMIN') %}
                     <td>
-                        <button type="button" class="btn btn-outline-light btn-sm form-modal-button" data-bs-toggle="modal" data-bs-target="#formModal" data-id="{{ entry.id }}">edit</button>
+                        <button type="button" class="btn btn-outline-light btn-sm form-modal-button" data-bs-toggle="modal" data-bs-target="#formModal" data-id="{{ entry.id }}">update</button>
                         <a href="{{ path('entry_delete', {'id': entry.id}) }}" onclick="return confirm('are you sure?')" type="button" class="btn btn-outline-danger btn-sm">delete</a>
                     </td>
                 {% endif %}
