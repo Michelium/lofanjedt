@@ -3,7 +3,7 @@
 {% block body %}
     <div class="row">
         <div class="col-12">
-            <button type="button" class="btn btn-outline-success float-end" data-bs-toggle="modal" data-bs-target="#formModal">new entry</button>
+            <button type="button" class="btn btn-outline-success float-end form-modal-button" data-bs-toggle="modal" data-bs-target="#formModal" data-id="0">new entry</button>
             <h3>lofanjedt</h3>
         </div>
     </div>
@@ -18,6 +18,7 @@
             <th>part of speech</th>
             <th>english</th>
             <th>information</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -30,10 +31,15 @@
                 <td>{{ entry.partOfSpeech }}</td>
                 <td>{{ entry.english }}</td>
                 <td>{{ entry.information }}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-light btn-sm form-modal-button" data-bs-toggle="modal" data-bs-target="#formModal" data-id="{{ entry.id }}">edit</button>
+                    <a href="{{ path('entry_delete', {'id': entry.id}) }}" onclick="return confirm('are you sure?')" type="button" class="btn btn-outline-danger btn-sm">delete</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    {% include 'dashboard/form.html.twig' %}
+    {% include 'dashboard/modal.html.twig' %}
+
 {% endblock %}

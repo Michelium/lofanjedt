@@ -5,3 +5,7 @@ body {
 .form-control {
     color: #f2f2f2!important;
 }
+
+.dataTables_wrapper .form-select {
+     background-color: white!important;
+ }
