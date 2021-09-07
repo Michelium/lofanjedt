@@ -25,7 +25,9 @@
                 <div class="card mt-2 mt-md-4 p-3">
                     <nav class="row">
                         <div class="col-12">
-                            <a type="button" href="{{ path('admin_user_index') }}" class="btn btn-outline-danger float-end">users</a>
+                            {% if app.user.granted('ROLE_ADMIN') %}
+                                <a type="button" href="{{ path('admin_user_index') }}" class="btn btn-outline-danger float-end">users</a>
+                            {% endif %}
                             <a type="button" href="{{ path('lofanje') }}" class="btn btn-outline-light">lofanje</a>
                         </div>
                     </nav>
