@@ -16,13 +16,13 @@ class DefaultController extends AbstractController {
      * @Route("/", name="index")
      */
     public function index(Request $request): Response {
-       return $this->redirectToRoute('dashboard');
+       return $this->redirectToRoute('lofanje');
     }
 
     /**
-     * @Route("/dashboard", name="dashboard")
+     * @Route("/lofanje", name="lofanje")
      */
-    public function dashboard(Request $request): Response {
+    public function lofanje(Request $request): Response {
         $em = $this->getDoctrine()->getManager();
 
         $entries = $em->getRepository(Entry::class)->findBy(['view_status' => 5]);
@@ -36,12 +36,12 @@ class DefaultController extends AbstractController {
             $em->persist($entry);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('lofanje');
         }
 
 
-        return $this->render('dashboard/index.html.twig', [
-            'title' => 'Dashboard',
+        return $this->render('lofanje/index.html.twig', [
+            'title' => 'lofanje',
             'entries' => $entries,
             'form' => $form->createView(),
         ]);
@@ -66,7 +66,7 @@ class DefaultController extends AbstractController {
         $em->flush();
 
         $this->addFlash('success', 'saved successfully');
-        return $this->redirectToRoute('dashboard');
+        return $this->redirectToRoute('lofanje');
     }
 
     /**
@@ -78,7 +78,7 @@ class DefaultController extends AbstractController {
 
         $form = $this->createForm(EntryType::class, $entry);
 
-        return new JsonResponse($this->renderView('dashboard/_form.html.twig', [
+        return new JsonResponse($this->renderView('lofanje/_form.html.twig', [
             'form' => $form->createView(),
         ]));
     }
@@ -97,6 +97,6 @@ class DefaultController extends AbstractController {
 
         $this->addFlash('success', 'deleted successfully');
 
-        return $this->redirectToRoute('dashboard');
+        return $this->redirectToRoute('lofanje');
     }
 }

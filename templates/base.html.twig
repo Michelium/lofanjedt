@@ -1,4 +1,4 @@
-{% set version = '1.0.1' %}
+{% set version = '1.0.2' %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +19,22 @@
 </head>
 <body>
 <div class="container-fluid">
+    {% if app.user %}
+        <div class="row">
+            <div class="col-12 col-md-10 mx-auto">
+                <div class="card mt-2 mt-md-4 p-3">
+                    <nav class="row">
+                        <div class="col-12">
+                            <a type="button" href="{{ path('lofanje') }}" class="btn btn-outline-light">lofanje</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    {% endif %}
     <div class="row">
         <div class="col-12 col-md-10 mx-auto">
-            <div class="card mt-2 mt-md-5 p-3">
+            <div class="card mt-2 mt-md-3 p-3">
                 {% block body %}{% endblock %}
             </div>
         </div>
