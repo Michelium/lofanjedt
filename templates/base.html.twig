@@ -28,7 +28,8 @@
                             {% if app.user.granted('ROLE_ADMIN') %}
                                 <a type="button" href="{{ path('admin_user_index') }}" class="btn btn-outline-danger float-end">users</a>
                             {% endif %}
-                            <a type="button" href="{{ path('lofanje') }}" class="btn btn-outline-light">lofanje</a>
+                            <a type="button" href="{{ path('lofanje') }}" class="btn btn-outline-light px-4">lofanje</a>
+                            <a type="button" href="{{ path('pages', {'slug': 'converters'}) }}" class="btn btn-outline-light px-4 mx-3">oplacale</a>
                         </div>
                     </nav>
                 </div>

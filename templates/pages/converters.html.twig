@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h3>oplacale</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h4>uxi metris ai jodjorami</h4>
+            <div class="form-group">
+                <label class="form-label w-75" for="meter">metris:</label>
+                <input class="form-control w-75" id="meter" type="number">
+            </div>
+            <div class="form-group my-2">
+                <label class="form-label w-75" for="jodjorami">jodjorami:</label>
+                <input class="form-control w-75" id="jodjorami" type="number">
+            </div>
+            <span id="madirami">&nbsp;</span>
+            <p class="mt-3">Oplacevi gi metris el jodjorami vodje sateris vor, cem oplacevi gi jodjorami el metris ca vodje sateris vor.</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <h4>brizocru</h4>
+            <div class="form-group">
+                <label class="form-label w-75"  for="fahrenheit">fahrenheit</label>
+                <input class="form-control w-75" id="fahrenheit" type="number">
+            </div>
+            <div class="form-group mt-2">
+                <label class="form-label w-75" for="gambino">caseli bridas</label>
+                <input class="form-control w-75" id="gambino" type="number">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 col-sm-4 col-xl-2">
+
+        </div>
+    </div>
+{% endblock %}

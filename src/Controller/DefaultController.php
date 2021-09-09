@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 class DefaultController extends AbstractController {
 
@@ -16,7 +17,7 @@ class DefaultController extends AbstractController {
      * @Route("/", name="index")
      */
     public function index(Request $request): Response {
-       return $this->redirectToRoute('lofanje');
+        return $this->redirectToRoute('lofanje');
     }
 
     /**
@@ -98,5 +99,16 @@ class DefaultController extends AbstractController {
         $this->addFlash('success', 'deleted successfully');
 
         return $this->redirectToRoute('lofanje');
+    }
+
+    /**
+     * @Route("/{slug}", name="pages", priority="-1")
+     */
+    public function pages($slug, Environment $environment) {
+        if ($environment->getLoader()->exists('pages/' . $slug . '.html.twig')) {
+            return $this->render('pages/' . $slug . '.html.twig');
+        } else {
+            return $this->redirectToRoute('lofanje');
+        }
     }
 }
