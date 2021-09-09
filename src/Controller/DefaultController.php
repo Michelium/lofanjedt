@@ -106,7 +106,9 @@ class DefaultController extends AbstractController {
      */
     public function pages($slug, Environment $environment) {
         if ($environment->getLoader()->exists('pages/' . $slug . '.html.twig')) {
-            return $this->render('pages/' . $slug . '.html.twig');
+            return $this->render('pages/' . $slug . '.html.twig', [
+                'title' => $slug,
+            ]);
         } else {
             return $this->redirectToRoute('lofanje');
         }
