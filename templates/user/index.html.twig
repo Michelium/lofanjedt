@@ -21,7 +21,7 @@
                 <tbody>
                 {% for user in users %}
                     <tr>
-                        <td>{{ user.username }}</td>
+                        <td>{{ user.userIdentifier }}</td>
                         <td>
                             {% if user.granted("ROLE_ADMIN") %}
                                 <span class="badge bg-danger"><i>admin</i></span>
@@ -30,8 +30,10 @@
                             {% endif %}
                         </td>
                         <td>
-                            <a class="btn btn-outline-light btn-sm" href="{{ path('admin_user_form', {'id': user.id}) }}">update</a>
-                            <a class="btn btn-outline-danger btn-sm" onclick="return confirm('are you sure?')"  href="{{ path('admin_user_delete', {'id': user.id}) }}">delete</a>
+                            {% if user.id != 1 or app.user.id == 1 %}
+                                <a class="btn btn-outline-light btn-sm" href="{{ path('admin_user_form', {'id': user.id}) }}">update</a>
+                                <a class="btn btn-outline-danger btn-sm" onclick="return confirm('are you sure?')" href="{{ path('admin_user_delete', {'id': user.id}) }}">delete</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% else %}
