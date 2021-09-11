@@ -49,11 +49,48 @@ function initDynamicFormFields() {
         let category = $(categoryElement).val();
 
         const fields = {
-            term: $('#entry_term').parent().parent(),
+            baseForm: $('#entry_baseForm').parent().parent(),
+            baseFormIpa: $('#entry_baseFormIpa').parent().parent(),
+            countability: $('#entry_countability').parent().parent(),
+            pluralForm: $('#entry_pluralForm').parent().parent(),
+            pluralFormIpa: $('#entry_pluralFormIpa').parent().parent(),
+            equivalentEnglish: $('#entry_equivalentEnglish').parent().parent(),
+            definitionEnglish: $('#entry_definitionEnglish').parent().parent(),
+            equivalentOtherLanguages: $('#entry_equivalentOtherLanguages').parent().parent(),
+            additionalInformation: $('#entry_additionalInformation').parent().parent(),
+            dialect: $('#entry_dialect').parent().parent(),
+            etymology: $('#entry_etymology').parent().parent(),
+            infinitive: $('#entry_infinitive').parent().parent(),
+            infinitiveIpa: $('#entry_infinitiveIpa').parent().parent(),
+            transitivity: $('#entry_transitivity').parent().parent(),
+            conjugation: $('#entry_conjugation').parent().parent(),
+            definiteness: $('#entry_definiteness').parent().parent(),
+            meaning: $('#entry_meaning').parent().parent(),
+            gender: $('#entry_gender').parent().parent(),
+            literalMeaningEnglish: $('#entry_literalMeaningEnglish').parent().parent(),
+            pronounsType: $('#entry_pronounsType').parent().parent(),
+            conjunctionsType: $('#entry_conjunctionsType').parent().parent(),
+            adpositionsType: $('#entry_adpositionsType').parent().parent(),
+            numeralsType: $('#entry_numeralsType').parent().parent(),
+            affixesType: $('#entry_affixesType').parent().parent(),
         };
 
         const config = {
-            'nouns': [fields.term],
+            'nouns': [fields.baseForm, fields.baseFormIpa, fields.countability, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'adjectives': [fields.baseForm, fields.baseFormIpa, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'geographical names': [fields.baseForm, fields.baseFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'demonyms': [fields.baseForm, fields.baseFormIpa, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'verbs': [fields.infinitive, fields.infinitiveIpa, fields.transitivity, fields.conjugation, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'articles': [fields.baseForm, fields.baseFormIpa, fields.definiteness, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'pronouns': [fields.baseForm, fields.baseFormIpa, fields.pronounsType, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'conjunctions': [fields.baseForm, fields.baseFormIpa, fields.conjunctionsType, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'adverbs': [fields.baseForm, fields.baseFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'adpositions': [fields.baseForm, fields.baseFormIpa, fields.adpositionsType, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'numerals': [fields.baseForm, fields.baseFormIpa, fields.numeralsType, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'interjections': [fields.baseForm, fields.baseFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'affixes': [fields.baseForm, fields.baseFormIpa, fields.affixesType, fields.meaning, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'phrases': [fields.baseForm, fields.baseFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'names': [fields.baseForm, fields.baseFormIpa, fields.gender, fields.literalMeaningEnglish, fields.additionalInformation, fields.dialect, fields.etymology],
         };
 
         $.each(fields, function (field, element) {

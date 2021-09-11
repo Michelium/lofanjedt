@@ -13,10 +13,22 @@ class Entry {
     public const CATEGORIES = [
         'nouns',
         'adjectives',
-        'geographical names and demonyms',
+        'geographical names',
+        'demonyms',
+        'verbs',
+        'articles',
+        'pronouns',
+        'conjunctions',
+        'adverbs',
+        'adpositions',
+        'numerals',
+        'interjections',
+        'affixes',
+        'phrases',
+        'names',
     ];
 
-    public const TYPE_OF_PRONOUN = [
+    public const TYPE_PRONOUNS = [
         'personal (1st person sg. nom.)', 'personal (2nd person sg. nom.)', 'personal (3rd person sg. nom.)', 'personal (1st person pl. nom.)', 'personal (2nd person pl. nom.)',
         'personal (3rd person pl. nom.)', 'personal (1st person sg. acc.)', 'personal (2nd person sg. acc.)', 'personal (3rd person sg. acc.)', 'personal (1st person pl. acc.)',
         'personal (2nd person pl. acc.)', 'personal (3rd person pl. acc.)', 'personal (1st person sg. gen.)', 'personal (2nd person sg. gen.)', 'personal (3rd person sg. gen.)',
@@ -24,6 +36,16 @@ class Entry {
         'personal (3rd person sg. dat.)', 'personal (1st person pl. dat.)', 'personal (2nd person pl. dat.)', 'personal (3rd person pl. dat.)',
         'indefinite', 'demonstrative', 'reflexive', 'reciprocal', 'relative', 'interrogative', 'other',
     ];
+    public const TYPE_CONJUNCTIONS = ['coordinating', 'temporal', 'correlative', 'subordinating'];
+    public const TYPE_ADPOSITIONS = ['preposition', 'postposition'];
+    public const TYPE_NUMERALS = ['cardinal', 'ordinal'];
+    public const TYPE_AFFIXES = ['prefix', 'suffix', 'infix', 'circumfix'];
+
+    public const COUNTABILITY = ['countable', 'uncountable'];
+    public const DEFINITENESS = ['definite', 'indefinite'];
+    public const TRANSITIVITY = ['transitive', 'intransitive', 'ambitransitive'];
+    public const CONJUGATION = ['regular', 'regular + «xa»', 'irregular', 'impersonal'];
+    public const GENDER = ['male', 'female'];
 
     /**
      * @ORM\Id
@@ -51,6 +73,126 @@ class Entry {
      * @ORM\Column(type="string", length=255)
      */
     private $category;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $base_form;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $base_form_ipa;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $countability;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $plural_form;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $plural_form_ipa;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $equivalent_english;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $definition_english;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $equivalent_other_languages;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $additional_information;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $dialect;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $etymology;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $infinitive;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $infinitive_ipa;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $transitivity;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $conjugation;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $definiteness;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $meaning;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $gender;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $literal_meaning_english;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pronouns_type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $conjunctions_type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adpositions_type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $numerals_type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $affixes_type;
 
     public function __construct() {
         $this->created_at = new \DateTime('now');
@@ -103,4 +245,201 @@ class Entry {
 
         return $this;
     }
+
+    public function getBaseForm(): ?string {
+        return $this->base_form;
+    }
+
+    public function setBaseForm(?string $base_form): self {
+        $this->base_form = $base_form;
+
+        return $this;
+    }
+
+    public function getBaseFormIpa(): ?string {
+        return $this->base_form_ipa;
+    }
+
+    public function setBaseFormIpa(?string $base_form_ipa): self {
+        $this->base_form_ipa = $base_form_ipa;
+        return $this;
+    }
+
+    public function getCountability() {
+        return $this->countability;
+    }
+
+    public function setCountability($countability): void {
+        $this->countability = $countability;
+    }
+
+    public function getPluralForm() {
+        return $this->plural_form;
+    }
+
+    public function setPluralForm($plural_form): void {
+        $this->plural_form = $plural_form;
+    }
+
+    public function getPluralFormIpa() {
+        return $this->plural_form_ipa;
+    }
+
+    public function setPluralFormIpa($plural_form_ipa): void {
+        $this->plural_form_ipa = $plural_form_ipa;
+    }
+
+    public function getEquivalentEnglish() {
+        return $this->equivalent_english;
+    }
+
+    public function setEquivalentEnglish($equivalent_english): void {
+        $this->equivalent_english = $equivalent_english;
+    }
+
+    public function getDefinitionEnglish() {
+        return $this->definition_english;
+    }
+
+    public function setDefinitionEnglish($definition_english): void {
+        $this->definition_english = $definition_english;
+    }
+
+    public function getEquivalentOtherLanguages() {
+        return $this->equivalent_other_languages;
+    }
+
+    public function setEquivalentOtherLanguages($equivalent_other_languages): void {
+        $this->equivalent_other_languages = $equivalent_other_languages;
+    }
+
+    public function getAdditionalInformation() {
+        return $this->additional_information;
+    }
+
+    public function setAdditionalInformation($additional_information): void {
+        $this->additional_information = $additional_information;
+    }
+
+    public function getDialect() {
+        return $this->dialect;
+    }
+
+    public function setDialect($dialect): void {
+        $this->dialect = $dialect;
+    }
+
+    public function getEtymology() {
+        return $this->etymology;
+    }
+
+    public function setEtymology($etymology): void {
+        $this->etymology = $etymology;
+    }
+
+    public function getInfinitive() {
+        return $this->infinitive;
+    }
+
+    public function setInfinitive($infinitive): void {
+        $this->infinitive = $infinitive;
+    }
+
+    public function getInfinitiveIpa() {
+        return $this->infinitive_ipa;
+    }
+
+    public function setInfinitiveIpa($infinitive_ipa): void {
+        $this->infinitive_ipa = $infinitive_ipa;
+    }
+
+    public function getTransitivity() {
+        return $this->transitivity;
+    }
+
+    public function setTransitivity($transitivity): void {
+        $this->transitivity = $transitivity;
+    }
+
+    public function getConjugation() {
+        return $this->conjugation;
+    }
+
+    public function setConjugation($conjugation): void {
+        $this->conjugation = $conjugation;
+    }
+
+    public function getDefiniteness() {
+        return $this->definiteness;
+    }
+
+    public function setDefiniteness($definiteness): void {
+        $this->definiteness = $definiteness;
+    }
+
+    public function getMeaning() {
+        return $this->meaning;
+    }
+
+    public function setMeaning($meaning): void {
+        $this->meaning = $meaning;
+    }
+
+    public function getGender() {
+        return $this->gender;
+    }
+
+    public function setGender($gender): void {
+        $this->gender = $gender;
+    }
+
+    public function getLiteralMeaningEnglish() {
+        return $this->literal_meaning_english;
+    }
+
+    public function setLiteralMeaningEnglish($literal_meaning_english): void {
+        $this->literal_meaning_english = $literal_meaning_english;
+    }
+
+    public function getPronounsType() {
+        return $this->pronouns_type;
+    }
+
+    public function setPronounsType($pronouns_type): void {
+        $this->pronouns_type = $pronouns_type;
+    }
+
+    public function getConjunctionsType() {
+        return $this->conjunctions_type;
+    }
+
+    public function setConjunctionsType($conjunctions_type): void {
+        $this->conjunctions_type = $conjunctions_type;
+    }
+
+    public function getAdpositionsType() {
+        return $this->adpositions_type;
+    }
+
+    public function setAdpositionsType($adpositions_type): void {
+        $this->adpositions_type = $adpositions_type;
+    }
+
+    public function getNumeralsType() {
+        return $this->numerals_type;
+    }
+
+    public function setNumeralsType($numerals_type): void {
+        $this->numerals_type = $numerals_type;
+    }
+
+    public function getAffixesType() {
+        return $this->affixes_type;
+    }
+
+    public function setAffixesType($affixes_type): void {
+        $this->affixes_type = $affixes_type;
+    }
+
+
 }
