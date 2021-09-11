@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Entry;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,12 +14,17 @@ class EntryType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
+            ->add('category', ChoiceType::class, [
+                'required' => true,
+                'label' => 'category',
+                'choices' => array_combine(Entry::CATEGORIES, Entry::CATEGORIES),
+            ])
             ->add('term', TextType::class, [
-                'label' => 'Term',
+                'label' => 'term',
                 'required' => true,
             ])
             ->add('plural', TextType::class, [
-                'label' => 'Plural',
+                'label' => 'plural',
                 'required' => false,
             ])
             ->add('ipa', TextType::class, [
@@ -30,15 +36,15 @@ class EntryType extends AbstractType {
                 'required' => false,
             ])
             ->add('part_of_speech', TextType::class, [
-                'label' => 'Part of speech',
+                'label' => 'part of speech',
                 'required' => false,
             ])
             ->add('english', TextType::class, [
-                'label' => 'Equivalent(s) in English',
+                'label' => 'equivalent(s) in English',
                 'required' => false,
             ])
             ->add('information', TextareaType::class, [
-                'label' => 'Additional information',
+                'label' => 'additional information',
                 'required' => false,
             ]);
     }

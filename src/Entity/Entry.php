@@ -9,47 +9,28 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass=EntryRepository::class)
  */
 class Entry {
+
+    public const CATEGORIES = [
+        'nouns',
+        'adjectives',
+        'geographical names and demonyms',
+    ];
+
+    public const TYPE_OF_PRONOUN = [
+        'personal (1st person sg. nom.)', 'personal (2nd person sg. nom.)', 'personal (3rd person sg. nom.)', 'personal (1st person pl. nom.)', 'personal (2nd person pl. nom.)',
+        'personal (3rd person pl. nom.)', 'personal (1st person sg. acc.)', 'personal (2nd person sg. acc.)', 'personal (3rd person sg. acc.)', 'personal (1st person pl. acc.)',
+        'personal (2nd person pl. acc.)', 'personal (3rd person pl. acc.)', 'personal (1st person sg. gen.)', 'personal (2nd person sg. gen.)', 'personal (3rd person sg. gen.)',
+        'personal (1st person pl. gen.)', 'personal (2nd person pl. gen.)', 'personal (3rd person pl. gen.)', 'personal (1st person sg. dat.)', 'personal (2nd person sg. dat.)',
+        'personal (3rd person sg. dat.)', 'personal (1st person pl. dat.)', 'personal (2nd person pl. dat.)', 'personal (3rd person pl. dat.)',
+        'indefinite', 'demonstrative', 'reflexive', 'reciprocal', 'relative', 'interrogative', 'other',
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $term;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $ipa;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $ipa_plural;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $plural;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $part_of_speech;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $english;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $information;
 
     /**
      * @ORM\Column(type="datetime")
@@ -66,6 +47,11 @@ class Entry {
      */
     private $view_status = 5;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $category;
+
     public function __construct() {
         $this->created_at = new \DateTime('now');
     }
@@ -76,76 +62,6 @@ class Entry {
 
     public function getId(): ?int {
         return $this->id;
-    }
-
-    public function getTerm(): ?string {
-        return $this->term;
-    }
-
-    public function setTerm(string $term): self {
-        $this->term = $term;
-
-        return $this;
-    }
-
-    public function getIpa(): ?string {
-        return $this->ipa;
-    }
-
-    public function setIpa(?string $ipa): self {
-        $this->ipa = $ipa;
-
-        return $this;
-    }
-
-    public function getIpaPlural(): ?string {
-        return $this->ipa_plural;
-    }
-
-    public function setIpaPlural(?string $ipa_plural): self {
-        $this->ipa_plural = $ipa_plural;
-
-        return $this;
-    }
-
-    public function getPlural(): ?string {
-        return $this->plural;
-    }
-
-    public function setPlural(?string $plural): self {
-        $this->plural = $plural;
-
-        return $this;
-    }
-
-    public function getPartOfSpeech(): ?string {
-        return $this->part_of_speech;
-    }
-
-    public function setPartOfSpeech(?string $part_of_speech): self {
-        $this->part_of_speech = $part_of_speech;
-
-        return $this;
-    }
-
-    public function getEnglish(): ?string {
-        return $this->english;
-    }
-
-    public function setEnglish(?string $english): self {
-        $this->english = $english;
-
-        return $this;
-    }
-
-    public function getInformation(): ?string {
-        return $this->information;
-    }
-
-    public function setInformation(?string $information): self {
-        $this->information = $information;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface {
@@ -174,6 +90,16 @@ class Entry {
 
     public function setViewStatus(int $view_status): self {
         $this->view_status = $view_status;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): self {
+        $this->category = $category;
 
         return $this;
     }

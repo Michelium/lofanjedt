@@ -5,6 +5,7 @@ $(document).ready(function () {
 function init() {
     initDataTable();
     initFormModal();
+    // initDynamicFormFields();
     initMeasurementConverter();
     initTemperatureConverter();
 }
@@ -32,13 +33,45 @@ function initFormModal() {
 
                 let form = $(body).find('form');
                 $(form).attr('action', '/entry/form/' + id)
+
+                initDynamicFormFields();
             });
     });
 }
 
+function initDynamicFormFields() {
+    const categoryElement = $('#entry_category');
+
+    $(categoryElement).on('change', updateFields);
+    updateFields();
+
+    function updateFields() {
+        let category = $(categoryElement).val();
+
+        const fields = {
+            term: $('#entry_term').parent().parent(),
+        };
+
+        const config = {
+            'nouns': [fields.term],
+        };
+
+        $.each(fields, function (field, element) {
+            $(element).hide();
+            if (config[category].includes(element)) {
+                $(element).show();
+            }
+        })
+    }
+}
+
 function initMeasurementConverter() {
-    document.getElementById('meter').addEventListener('keydown', meterToJodjorami);
-    document.getElementById('jodjorami').addEventListener('keydown', jodjoramiToMeter);
+    if (document.getElementById('meter')) {
+        document.getElementById('meter').addEventListener('keydown', meterToJodjorami);
+    }
+    if (document.getElementById('jodjorami')) {
+        document.getElementById('jodjorami').addEventListener('keydown', jodjoramiToMeter);
+    }
 
     function meterToJodjorami() {
         let meter = document.getElementById('meter').value;
@@ -57,8 +90,12 @@ function initMeasurementConverter() {
 }
 
 function initTemperatureConverter() {
-    document.getElementById('fahrenheit').addEventListener('keydown', fahrenheitToGambino);
-    document.getElementById('gambino').addEventListener('keydown', gambinoToFahrenheit);
+    if (document.getElementById('fahrenheit')) {
+        document.getElementById('fahrenheit').addEventListener('keydown', fahrenheitToGambino);
+    }
+    if (document.getElementById('gambino')) {
+        document.getElementById('gambino').addEventListener('keydown', gambinoToFahrenheit);
+    }
 
     function fahrenheitToGambino() {
         let fahrenheit = document.getElementById('fahrenheit').value;

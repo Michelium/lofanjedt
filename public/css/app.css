@@ -8,3 +8,6 @@ body {
 .form-select {
     color: #f2f2f2!important;
 }
+.form-label:after {
+    content: ':';
+}
