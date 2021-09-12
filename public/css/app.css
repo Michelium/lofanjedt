@@ -11,3 +11,7 @@ body {
 .form-label:after {
     content: ':';
 }
+.form-wrap {
+    display: flex;
+    flex-direction: column;
+}

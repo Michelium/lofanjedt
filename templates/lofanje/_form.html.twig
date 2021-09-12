@@ -5,16 +5,18 @@
     </div>
 </div>
 <hr>
-{% for key, field in form.children|slice(1)|slice(0, -1) %}
-    <div class="row">
-        <div class="col-sm-2 col-form-label">
-            {{ form_label(attribute(form, key)) }}
+<div class="form-wrap">
+    {% for key, field in form.children|slice(1)|slice(0, -1) %}
+        <div class="row">
+            <div class="col-sm-2 col-form-label">
+                {{ form_label(attribute(form, key)) }}
+            </div>
+            <div class="col-sm-10">
+                {{ form_widget(attribute(form, key)) }}
+            </div>
         </div>
-        <div class="col-sm-10">
-            {{ form_widget(attribute(form, key)) }}
-        </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+</div>
 <div class="row">
     <div class="col-12">
         <button type="submit" class="btn btn-primary float-end">save changes</button>

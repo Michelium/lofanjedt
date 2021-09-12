@@ -93,12 +93,24 @@ function initDynamicFormFields() {
             'names': [fields.baseForm, fields.baseFormIpa, fields.gender, fields.literalMeaningEnglish, fields.additionalInformation, fields.dialect, fields.etymology],
         };
 
-        $.each(fields, function (field, element) {
-            $(element).hide();
-            if (config[category].includes(element)) {
-                $(element).show();
-            }
-        })
+        if (config[category]) {
+            $.each(config[category], function (number, element) {
+                console.log(element);
+                console.log(number)
+                if (hideAllFields()) {
+                    $(element).css('order', number);
+                    setTimeout(function () { $(element).show(); }, 100)
+                }
+            })
+        }
+
+        function hideAllFields() {
+            $.each(fields, function (field, element) {
+                $(element).hide();
+                $(element).css('order', null);
+            })
+            return true;
+        }
     }
 }
 

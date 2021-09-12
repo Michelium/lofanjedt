@@ -2808,3 +2808,268 @@ Generating optimized autoload files
   INFO [43209c87] Running /usr/bin/env echo "Branch master (at 75a6485ef801002fbccad191f45ef5c14835bf2f) deployed as release 20210911220352 by Michel" >> ~/domains/lofanjedt.nl/revisions.log as u114524p110947@web0139.zxcs.nl
  DEBUG [43209c87] Command: cd ~/domains/lofanjedt.nl/releases && /usr/bin/env echo "Branch master (at 75a6485ef801002fbccad191f45ef5c14835bf2f) deployed as release 20210911220352 by Michel" >> ~/domains/lofanjedt.nl/revisions.log
   INFO [43209c87] Finished in 0.591 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-09-12 00:33:50 +0200 cap prod deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [8ae56352] Running /usr/bin/env mkdir -p /home/u114524p110947/tmp as u114524p110947@web0139.zxcs.nl
+ DEBUG [8ae56352] Command: /usr/bin/env mkdir -p /home/u114524p110947/tmp
+  INFO [8ae56352] Finished in 0.946 seconds with exit status 0 (successful).
+ DEBUG Uploading /home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh 0.0%
+  INFO Uploading /home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh 100.0%
+  INFO [b28e0829] Running /usr/bin/env chmod 700 /home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh as u114524p110947@web0139.zxcs.nl
+ DEBUG [b28e0829] Command: /usr/bin/env chmod 700 /home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh
+  INFO [b28e0829] Finished in 0.588 seconds with exit status 0 (successful).
+  INFO [3fc822e0] Running /usr/bin/env git ls-remote git@github.com:Michelium/lofanjedt.git HEAD as u114524p110947@web0139.zxcs.nl
+ DEBUG [3fc822e0] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh" ; /usr/bin/env git ls-remote git@github.com:Michelium/lofanjedt.git HEAD )
+ DEBUG [3fc822e0] 	62a7ad0e5fc3c148a88cc1eb01a647abf11ffa0a	HEAD
+  INFO [3fc822e0] Finished in 1.731 seconds with exit status 0 (successful).
+  INFO [b69610a2] Running /usr/bin/env mkdir -p ~/domains/lofanjedt.nl/shared ~/domains/lofanjedt.nl/releases as u114524p110947@web0139.zxcs.nl
+ DEBUG [b69610a2] Command: /usr/bin/env mkdir -p ~/domains/lofanjedt.nl/shared ~/domains/lofanjedt.nl/releases
+  INFO [b69610a2] Finished in 0.531 seconds with exit status 0 (successful).
+  INFO [1013e0e8] Running /usr/bin/env mkdir -p ~/domains/lofanjedt.nl/shared as u114524p110947@web0139.zxcs.nl
+ DEBUG [1013e0e8] Command: /usr/bin/env mkdir -p ~/domains/lofanjedt.nl/shared
+  INFO [1013e0e8] Finished in 0.557 seconds with exit status 0 (successful).
+ DEBUG [0fc4fbff] Running [ -f ~/domains/lofanjedt.nl/shared/.env.local ] as u114524p110947@web0139.zxcs.nl
+ DEBUG [0fc4fbff] Command: [ -f ~/domains/lofanjedt.nl/shared/.env.local ]
+ DEBUG [0fc4fbff] Finished in 0.591 seconds with exit status 0 (successful).
+ DEBUG [27458307] Running [ -f ~/domains/lofanjedt.nl/current/REVISION ] as u114524p110947@web0139.zxcs.nl
+ DEBUG [27458307] Command: [ -f ~/domains/lofanjedt.nl/current/REVISION ]
+ DEBUG [27458307] Finished in 0.588 seconds with exit status 0 (successful).
+ DEBUG [c6ba6c9d] Running /usr/bin/env cat ~/domains/lofanjedt.nl/current/REVISION 2>/dev/null as u114524p110947@web0139.zxcs.nl
+ DEBUG [c6ba6c9d] Command: /usr/bin/env cat ~/domains/lofanjedt.nl/current/REVISION 2>/dev/null
+ DEBUG [c6ba6c9d] 	75a6485ef801002fbccad191f45ef5c14835bf2f
+ DEBUG [c6ba6c9d] Finished in 0.575 seconds with exit status 0 (successful).
+ DEBUG [7db3a097] Running [ -f ~/domains/lofanjedt.nl/repo/HEAD ] as u114524p110947@web0139.zxcs.nl
+ DEBUG [7db3a097] Command: [ -f ~/domains/lofanjedt.nl/repo/HEAD ]
+ DEBUG [7db3a097] Finished in 0.557 seconds with exit status 0 (successful).
+  INFO The repository mirror is at ~/domains/lofanjedt.nl/repo
+ DEBUG [07f9e47b] Running if test ! -d ~/domains/lofanjedt.nl/repo; then echo "Directory does not exist '~/domains/lofanjedt.nl/repo'" 1>&2; false; fi as u114524p110947@web0139.zxcs.nl
+ DEBUG [07f9e47b] Command: if test ! -d ~/domains/lofanjedt.nl/repo; then echo "Directory does not exist '~/domains/lofanjedt.nl/repo'" 1>&2; false; fi
+ DEBUG [07f9e47b] Finished in 0.554 seconds with exit status 0 (successful).
+  INFO [f3451f8a] Running /usr/bin/env git remote set-url origin git@github.com:Michelium/lofanjedt.git as u114524p110947@web0139.zxcs.nl
+ DEBUG [f3451f8a] Command: cd ~/domains/lofanjedt.nl/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh" ; /usr/bin/env git remote set-url origin git@github.com:Michelium/lofanjedt.git )
+  INFO [f3451f8a] Finished in 0.584 seconds with exit status 0 (successful).
+  INFO [bae000e9] Running /usr/bin/env git remote update --prune as u114524p110947@web0139.zxcs.nl
+ DEBUG [bae000e9] Command: cd ~/domains/lofanjedt.nl/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [bae000e9] 	Fetching origin
+ DEBUG [bae000e9] 	From github.com:Michelium/lofanjedt
+   75a6485..62a7ad0  master     -> master
+  INFO [bae000e9] Finished in 1.933 seconds with exit status 0 (successful).
+ DEBUG [f8afb3a7] Running if test ! -d ~/domains/lofanjedt.nl/repo; then echo "Directory does not exist '~/domains/lofanjedt.nl/repo'" 1>&2; false; fi as u114524p110947@web0139.zxcs.nl
+ DEBUG [f8afb3a7] Command: if test ! -d ~/domains/lofanjedt.nl/repo; then echo "Directory does not exist '~/domains/lofanjedt.nl/repo'" 1>&2; false; fi
+ DEBUG [f8afb3a7] Finished in 0.554 seconds with exit status 0 (successful).
+  INFO [c3b689fd] Running /usr/bin/env mkdir -p ~/domains/lofanjedt.nl/releases/20210911223357 as u114524p110947@web0139.zxcs.nl
+ DEBUG [c3b689fd] Command: cd ~/domains/lofanjedt.nl/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh" ; /usr/bin/env mkdir -p ~/domains/lofanjedt.nl/releases/20210911223357 )
+  INFO [c3b689fd] Finished in 0.816 seconds with exit status 0 (successful).
+  INFO [1c582164] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C ~/domains/lofanjedt.nl/releases/20210911223357 as u114524p110947@web0139.zxcs.nl
+ DEBUG [1c582164] Command: cd ~/domains/lofanjedt.nl/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C ~/domains/lofanjedt.nl/releases/20210911223357 )
+  INFO [1c582164] Finished in 1.196 seconds with exit status 0 (successful).
+ DEBUG [496cda69] Running if test ! -d ~/domains/lofanjedt.nl/repo; then echo "Directory does not exist '~/domains/lofanjedt.nl/repo'" 1>&2; false; fi as u114524p110947@web0139.zxcs.nl
+ DEBUG [496cda69] Command: if test ! -d ~/domains/lofanjedt.nl/repo; then echo "Directory does not exist '~/domains/lofanjedt.nl/repo'" 1>&2; false; fi
+ DEBUG [496cda69] Finished in 0.643 seconds with exit status 0 (successful).
+ DEBUG [3977e75e] Running /usr/bin/env git rev-list --max-count=1 master as u114524p110947@web0139.zxcs.nl
+ DEBUG [3977e75e] Command: cd ~/domains/lofanjedt.nl/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/home/u114524p110947/tmp/git-ssh-7df2a5567b05924b3c53.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [3977e75e] 	62a7ad0e5fc3c148a88cc1eb01a647abf11ffa0a
+ DEBUG [3977e75e] Finished in 0.605 seconds with exit status 0 (successful).
+ DEBUG [36235002] Running if test ! -d ~/domains/lofanjedt.nl/releases/20210911223357; then echo "Directory does not exist '~/domains/lofanjedt.nl/releases/20210911223357'" 1>&2; false; fi as u114524p110947@web0139.zxcs.nl
+ DEBUG [36235002] Command: if test ! -d ~/domains/lofanjedt.nl/releases/20210911223357; then echo "Directory does not exist '~/domains/lofanjedt.nl/releases/20210911223357'" 1>&2; false; fi
+ DEBUG [36235002] Finished in 0.590 seconds with exit status 0 (successful).
+  INFO [e9337582] Running /usr/bin/env echo "62a7ad0e5fc3c148a88cc1eb01a647abf11ffa0a" > REVISION as u114524p110947@web0139.zxcs.nl
+ DEBUG [e9337582] Command: cd ~/domains/lofanjedt.nl/releases/20210911223357 && /usr/bin/env echo "62a7ad0e5fc3c148a88cc1eb01a647abf11ffa0a" > REVISION
+  INFO [e9337582] Finished in 0.583 seconds with exit status 0 (successful).
+  INFO [c96fdc19] Running /usr/bin/env mkdir -p ~/domains/lofanjedt.nl/releases/20210911223357 as u114524p110947@web0139.zxcs.nl
+ DEBUG [c96fdc19] Command: /usr/bin/env mkdir -p ~/domains/lofanjedt.nl/releases/20210911223357
+  INFO [c96fdc19] Finished in 0.565 seconds with exit status 0 (successful).
+ DEBUG [1edc2cac] Running [ -L ~/domains/lofanjedt.nl/releases/20210911223357/.env.local ] as u114524p110947@web0139.zxcs.nl
+ DEBUG [1edc2cac] Command: [ -L ~/domains/lofanjedt.nl/releases/20210911223357/.env.local ]
+ DEBUG [1edc2cac] Finished in 0.576 seconds with exit status 1 (failed).
+ DEBUG [f585a39f] Running [ -f ~/domains/lofanjedt.nl/releases/20210911223357/.env.local ] as u114524p110947@web0139.zxcs.nl
+ DEBUG [f585a39f] Command: [ -f ~/domains/lofanjedt.nl/releases/20210911223357/.env.local ]
+ DEBUG [f585a39f] Finished in 0.575 seconds with exit status 1 (failed).
+  INFO [ea4ce08c] Running /usr/bin/env ln -s ~/domains/lofanjedt.nl/shared/.env.local ~/domains/lofanjedt.nl/releases/20210911223357/.env.local as u114524p110947@web0139.zxcs.nl
+ DEBUG [ea4ce08c] Command: /usr/bin/env ln -s ~/domains/lofanjedt.nl/shared/.env.local ~/domains/lofanjedt.nl/releases/20210911223357/.env.local
+  INFO [ea4ce08c] Finished in 0.573 seconds with exit status 0 (successful).
+ DEBUG [f190c4aa] Running if test ! -d ~/domains/lofanjedt.nl/releases/20210911223357; then echo "Directory does not exist '~/domains/lofanjedt.nl/releases/20210911223357'" 1>&2; false; fi as u114524p110947@web0139.zxcs.nl
+ DEBUG [f190c4aa] Command: if test ! -d ~/domains/lofanjedt.nl/releases/20210911223357; then echo "Directory does not exist '~/domains/lofanjedt.nl/releases/20210911223357'" 1>&2; false; fi
+ DEBUG [f190c4aa] Finished in 0.568 seconds with exit status 0 (successful).
+  INFO [d6d15679] Running composer install --no-dev --no-interaction --optimize-autoloader --ignore-platform-reqs as u114524p110947@web0139.zxcs.nl
+ DEBUG [d6d15679] Command: cd ~/domains/lofanjedt.nl/releases/20210911223357 && composer install --no-dev --no-interaction --optimize-autoloader --ignore-platform-reqs
+ DEBUG [d6d15679] 	Installing dependencies from lock file
+ DEBUG [d6d15679] 	Verifying lock file contents can be installed on current platform.
+ DEBUG [d6d15679] 	Package operations: 96 installs, 0 updates, 0 removals
+ DEBUG [d6d15679] 	    0 [>---------------------------]
+ DEBUG [d6d15679] 	    0 [>---------------------------]    0 [>---------------------------]
+ DEBUG [d6d15679] 	  - Installing composer/package-versions-deprecated (1.11.99.3): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/flex (v1.15.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/polyfill-php80 (v1.23.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/runtime (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/deprecation-contracts (v2.4.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/routing (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/polyfill-mbstring (v1.23.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/polyfill-php73 (v1.23.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/http-foundation (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/http-client-contracts (v2.4.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing psr/event-dispatcher (1.0.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/event-dispatcher-contracts (v2.4.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/event-dispatcher (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/var-dumper (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing psr/log (1.1.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/error-handler (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/http-kernel (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/finder (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/filesystem (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing psr/container (1.1.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/service-contracts (v2.4.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/dependency-injection (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/polyfill-php81 (v1.23.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/config (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/var-exporter (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing psr/cache (1.0.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/cache-contracts (v2.4.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/cache (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/framework-bundle (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/stopwatch (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/polyfill-intl-normalizer (v1.23.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/polyfill-intl-grapheme (v1.23.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/string (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/console (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing laminas/laminas-code (4.4.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing friendsofphp/proxy-manager-lts (v1.0.5): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/event-manager (1.1.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/deprecations (v0.5.3): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/cache (2.1.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/dbal (2.13.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/migrations (3.2.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/collections (1.6.8): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/lexer (1.2.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/annotations (1.13.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/persistence (2.2.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/doctrine-bridge (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/sql-formatter (1.1.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/doctrine-bundle (2.4.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/doctrine-migrations-bundle (3.1.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/instantiator (1.4.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/inflector (2.0.3): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/common (3.1.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing doctrine/orm (2.9.5): Extracting archive
+ DEBUG [d6d15679] 	  - Installing webmozart/assert (1.10.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing phpdocumentor/reflection-common (2.2.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing phpdocumentor/type-resolver (1.4.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing phpdocumentor/reflection-docblock (5.2.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing sensio/framework-extra-bundle (v6.1.5): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/apache-pack (v1.0.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/asset (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/dotenv (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/expression-language (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/property-info (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/property-access (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/polyfill-intl-icu (v1.23.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/options-resolver (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/form (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/http-client (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/intl (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/polyfill-intl-idn (v1.23.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/mime (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing egulias/email-validator (3.1.1): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/mailer (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing monolog/monolog (2.3.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/monolog-bridge (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/monolog-bundle (v3.7.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/notifier (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/process (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/proxy-manager-bridge (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/password-hasher (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/security-core (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/security-http (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/security-guard (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/security-csrf (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/security-bundle (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/serializer (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/translation-contracts (v2.4.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/translation (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing twig/twig (v3.3.2): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/twig-bridge (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/validator (v5.3.7): Extracting archive
+ DEBUG [d6d15679] 	  - Installing psr/link (1.0.0): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/web-link (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/yaml (v5.3.6): Extracting archive
+ DEBUG [d6d15679] 	  - Installing symfony/twig-bundle (v5.3.4): Extracting archive
+ DEBUG [d6d15679] 	  - Installing twig/extra-bundle (v3.3.1): Extracting archive
+ DEBUG [d6d15679] 	  0/82 [>---------------------------]   0%
+ DEBUG [d6d15679] 	
+ 10/82 [===>------------------------]  12%
+ DEBUG [d6d15679] 	
+ 20/82 [======>---------------------]  24%
+ DEBUG [d6d15679] 	
+ 28/82 [=========>------------------]  34%
+ DEBUG [d6d15679] 	
+ 38/82 [============>---------------]  46%
+ DEBUG [d6d15679] 	
+ 47/82 [================>-----------]  57%
+ DEBUG [d6d15679] 	
+ 56/82 [===================>--------]  68%
+ DEBUG [d6d15679] 	
+ 65/82 [======================>-----]  79%
+ DEBUG [d6d15679] 	
+ 75/82 [=========================>--]  91%
+ DEBUG [d6d15679] 	
+ 82/82 [============================] 100%
+ DEBUG [d6d15679] 	 82/82 [============================] 100%
+ DEBUG [d6d15679] 	Package sebastian/resource-operations is abandoned, you should avoid using it. No replacement was suggested.
+Generating optimized autoload files
+ DEBUG [d6d15679] 	composer/package-versions-deprecated: Generating version class...
+ DEBUG [d6d15679] 	composer/package-versions-deprecated: ...done generating version class
+ DEBUG [d6d15679] 	79 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+ DEBUG [d6d15679] 	
+ DEBUG [d6d15679] 	Run composer recipes at any time to see the status of your Symfony recipes.
+
+ DEBUG [d6d15679] 	Executing script cache:clear
+ DEBUG [d6d15679] 	 [OK]
+ DEBUG [d6d15679] 	Executing script assets:install public
+ DEBUG [d6d15679] 	 [OK]
+ DEBUG [d6d15679] 	
+  INFO [d6d15679] Finished in 5.041 seconds with exit status 0 (successful).
+  INFO [3d96d1d8] Running cd ~/domains/lofanjedt.nl/releases/20210911223357 && php bin/console doctrine:migrations:migrate --no-interaction as u114524p110947@web0139.zxcs.nl
+ DEBUG [3d96d1d8] Command: cd ~/domains/lofanjedt.nl/releases/20210911223357 && php bin/console doctrine:migrations:migrate --no-interaction
+ DEBUG [3d96d1d8] 	
+ DEBUG [3d96d1d8] 	 [OK] Already at the latest version ("DoctrineMigrations\Version20210911212332")
+ DEBUG [3d96d1d8] 	
+  INFO [3d96d1d8] Finished in 0.703 seconds with exit status 0 (successful).
+  INFO [eec6bd44] Running cd ~/domains/lofanjedt.nl/releases/20210911223357 && php bin/console cache:clear as u114524p110947@web0139.zxcs.nl
+ DEBUG [eec6bd44] Command: cd ~/domains/lofanjedt.nl/releases/20210911223357 && php bin/console cache:clear
+ DEBUG [eec6bd44] 	
+ DEBUG [eec6bd44] 	 // Clearing the cache for the prod environment with debug                      
+ DEBUG [eec6bd44] 	 // false                                                                       
+ DEBUG [eec6bd44] 	
+ DEBUG [eec6bd44] 	 [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
+
+  INFO [eec6bd44] Finished in 2.240 seconds with exit status 0 (successful).
+  INFO [9abb5447] Running /usr/bin/env ln -s ~/domains/lofanjedt.nl/releases/20210911223357 ~/domains/lofanjedt.nl/releases/current as u114524p110947@web0139.zxcs.nl
+ DEBUG [9abb5447] Command: /usr/bin/env ln -s ~/domains/lofanjedt.nl/releases/20210911223357 ~/domains/lofanjedt.nl/releases/current
+  INFO [9abb5447] Finished in 0.527 seconds with exit status 0 (successful).
+  INFO [b404178b] Running /usr/bin/env mv ~/domains/lofanjedt.nl/releases/current ~/domains/lofanjedt.nl as u114524p110947@web0139.zxcs.nl
+ DEBUG [b404178b] Command: /usr/bin/env mv ~/domains/lofanjedt.nl/releases/current ~/domains/lofanjedt.nl
+  INFO [b404178b] Finished in 0.575 seconds with exit status 0 (successful).
+ DEBUG [c631b39d] Running /usr/bin/env ls -x ~/domains/lofanjedt.nl/releases as u114524p110947@web0139.zxcs.nl
+ DEBUG [c631b39d] Command: /usr/bin/env ls -x ~/domains/lofanjedt.nl/releases
+ DEBUG [c631b39d] 	20210907202258	20210909160829	20210909161028	20210911214543	20210911220352
+20210911223357
+ DEBUG [c631b39d] Finished in 0.575 seconds with exit status 0 (successful).
+  INFO Keeping 5 of 6 deployed releases on web0139.zxcs.nl
+ DEBUG [7e5f5a7b] Running [ -d ~/domains/lofanjedt.nl/current ] as u114524p110947@web0139.zxcs.nl
+ DEBUG [7e5f5a7b] Command: [ -d ~/domains/lofanjedt.nl/current ]
+ DEBUG [7e5f5a7b] Finished in 0.556 seconds with exit status 0 (successful).
+ DEBUG [42e1c5ef] Running /usr/bin/env readlink ~/domains/lofanjedt.nl/current as u114524p110947@web0139.zxcs.nl
+ DEBUG [42e1c5ef] Command: /usr/bin/env readlink ~/domains/lofanjedt.nl/current
+ DEBUG [42e1c5ef] 	/home/u114524p110947/domains/lofanjedt.nl/releases/20210911223357
+ DEBUG [42e1c5ef] Finished in 0.575 seconds with exit status 0 (successful).
+  INFO [73588c46] Running /usr/bin/env rm -rf ~/domains/lofanjedt.nl/releases/20210907202258 as u114524p110947@web0139.zxcs.nl
+ DEBUG [73588c46] Command: /usr/bin/env rm -rf ~/domains/lofanjedt.nl/releases/20210907202258
+  INFO [73588c46] Finished in 0.983 seconds with exit status 0 (successful).
+ DEBUG [6a4d8be7] Running if test ! -d ~/domains/lofanjedt.nl/releases; then echo "Directory does not exist '~/domains/lofanjedt.nl/releases'" 1>&2; false; fi as u114524p110947@web0139.zxcs.nl
+ DEBUG [6a4d8be7] Command: if test ! -d ~/domains/lofanjedt.nl/releases; then echo "Directory does not exist '~/domains/lofanjedt.nl/releases'" 1>&2; false; fi
+ DEBUG [6a4d8be7] Finished in 0.585 seconds with exit status 0 (successful).
+  INFO [fb91edff] Running /usr/bin/env echo "Branch master (at 62a7ad0e5fc3c148a88cc1eb01a647abf11ffa0a) deployed as release 20210911223357 by Michel" >> ~/domains/lofanjedt.nl/revisions.log as u114524p110947@web0139.zxcs.nl
+ DEBUG [fb91edff] Command: cd ~/domains/lofanjedt.nl/releases && /usr/bin/env echo "Branch master (at 62a7ad0e5fc3c148a88cc1eb01a647abf11ffa0a) deployed as release 20210911223357 by Michel" >> ~/domains/lofanjedt.nl/revisions.log
+  INFO [fb91edff] Finished in 0.587 seconds with exit status 0 (successful).
