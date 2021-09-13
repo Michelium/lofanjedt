@@ -26,6 +26,8 @@ class Entry {
         'affixes',
         'phrases',
         'names',
+        'daitic',
+        'codian',
     ];
 
     public const TYPE_PRONOUNS = [
