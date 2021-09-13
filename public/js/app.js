@@ -5,7 +5,6 @@ $(document).ready(function () {
 function init() {
     initDataTable();
     initFormModal();
-    // initDynamicFormFields();
     initMeasurementConverter();
     initTemperatureConverter();
 }
@@ -95,13 +94,12 @@ function initDynamicFormFields() {
 
         if (config[category]) {
             $.each(config[category], function (number, element) {
-                console.log(element);
-                console.log(number)
                 if (hideAllFields()) {
                     $(element).css('order', number);
                     setTimeout(function () { $(element).show(); }, 100)
                 }
             })
+            setTimeout(popovers, 100);
         }
 
         function hideAllFields() {
@@ -111,6 +109,41 @@ function initDynamicFormFields() {
             })
             return true;
         }
+
+        function popovers() {
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, {html: true,})
+            });
+
+            $(document).on('click', '.ipa-button', function () {
+                const value = $(this).data('value');
+                let elementId = $('#'+$(this).parent().data('element'));
+
+                console.log(value)
+                console.log('#'+elementId)
+
+                $(elementId).val($(elementId).val() + value);
+            });
+        }
+
+        $(document).on('click', '.ipa-popup',function () {
+            let body = $('.popover-body');
+            $(body).html(popoverContent);
+            $(body).data('element', $(this).attr('id'));
+            $(body).attr('data-element', $(this).attr('id'));
+
+        });
+
+        const popoverContent = "" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ə'>ə</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ð'>ð</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɛ'>ɛ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɣ'>ɣ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ʒ'>ʒ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɔ'>ɔ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɾ'>ɾ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ʃ'>ʃ</button>\n";
     }
 }
 

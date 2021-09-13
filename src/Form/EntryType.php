@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Entry;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,6 +25,13 @@ class EntryType extends AbstractType {
             ->add('baseFormIpa', TextType::class, [
                 'label' => 'base form IPA',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('pronounsType', ChoiceType::class, [
                 'required' => true,
@@ -64,6 +70,13 @@ class EntryType extends AbstractType {
             ->add('pluralFormIpa', TextType::class, [
                 'label' => 'plural form IPA',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('equivalentEnglish', TextType::class, [
                 'label' => 'equivalent(s) in English',

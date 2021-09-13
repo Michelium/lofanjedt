@@ -15,3 +15,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.popover {
+    max-width: 395px!important;
+}
