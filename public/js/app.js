@@ -16,7 +16,7 @@ function initDataTable() {
 }
 
 function initFormModal() {
-    $('.form-modal-button').on('click', function () {
+    $(document).on('click', '.form-modal-button', function () {
         const id = $(this).data('id');
 
         $.ajax({
