@@ -138,6 +138,10 @@ class EntryType extends AbstractType {
                 'label' => 'literal meaning in English',
                 'required' => false,
             ])
+            ->add('partOfSpeech', TextType::class, [
+                'label' => 'part of speech',
+                'required' => false,
+            ])
             ;
     }
 

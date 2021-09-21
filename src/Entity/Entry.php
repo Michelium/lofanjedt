@@ -196,6 +196,11 @@ class Entry {
      */
     private $affixes_type;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $part_of_speech;
+
     public function __construct() {
         $this->created_at = new \DateTime('now');
     }
@@ -443,5 +448,11 @@ class Entry {
         $this->affixes_type = $affixes_type;
     }
 
+    public function getPartOfSpeech() {
+        return $this->part_of_speech;
+    }
 
+    public function setPartOfSpeech($part_of_speech): void {
+        $this->part_of_speech = $part_of_speech;
+    }
 }
