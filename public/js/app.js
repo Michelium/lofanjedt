@@ -5,6 +5,7 @@ $(document).ready(function () {
 function init() {
     initDataTable();
     initFormModal();
+    initCategorySelect();
     initMeasurementConverter();
     initTemperatureConverter();
 }
@@ -147,6 +148,34 @@ function initDynamicFormFields() {
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɔ'>ɔ</button>\n" +
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɾ'>ɾ</button>\n" +
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ʃ'>ʃ</button>\n";
+    }
+}
+
+function initCategorySelect() {
+    if (sessionStorage.getItem('category')) {
+        const category = sessionStorage.getItem('category');
+        updateTable(category);
+        $('#category-select').val(category);
+    }
+
+    $(document).on('change', '#category-select', function () {
+        const category = $(this).val();
+        sessionStorage.setItem('category', category);
+        updateTable(category);
+    });
+
+    function updateTable(category) {
+        $.ajax({
+            url: '/lofanje/get-table',
+            data: {
+                category: category,
+            }
+        }).done(function (data) {
+            let main = $('main');
+            $(main).empty();
+            $(main).append(data);
+            initDataTable();
+        })
     }
 }
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Entry;
 use App\Form\EntryType;
+use PHPUnit\Util\Json;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,8 +27,6 @@ class DefaultController extends AbstractController {
     public function lofanje(Request $request): Response {
         $em = $this->getDoctrine()->getManager();
 
-        $entries = $em->getRepository(Entry::class)->findBy(['view_status' => 5]);
-
         $entry = new Entry();
         $form = $this->createForm(EntryType::class, $entry);
         $form->handleRequest($request);
@@ -43,9 +42,21 @@ class DefaultController extends AbstractController {
 
         return $this->render('lofanje/index.html.twig', [
             'title' => 'lofanje',
-            'entries' => $entries,
+            'categories' => Entry::CATEGORIES,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/lofanje/get-table", name="lofanje_get_table")
+     */
+    public function getTable(Request $request) {
+        $category = $request->get('category');
+        $entries = $this->getDoctrine()->getRepository(Entry::class)->findBy(['view_status' => 5, 'category' => $category]);
+
+        return new JsonResponse($this->renderView('lofanje/_table.html.twig', [
+            'entries' => $entries,
+        ]));
     }
 
     /**
