@@ -30,6 +30,26 @@ class Entry {
         'codian (obsolete)',
     ];
 
+    public const FIELDS = [
+        'nouns' => ['baseForm', 'baseFormIpa', 'countability', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'adjectives' => ['baseForm', 'baseFormIpa', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'geographical names' => ['baseForm', 'baseFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'demonyms' => ['baseForm', 'baseFormIpa', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'verbs' => ['infinitive', 'infinitiveIpa', 'transitivity', 'conjugation', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'articles' => ['baseForm', 'baseFormIpa', 'definiteness', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'pronouns' => ['baseForm', 'baseFormIpa', 'pronounsType', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'conjunctions' => ['baseForm', 'baseFormIpa', 'conjunctionsType', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'adverbs' => ['baseForm', 'baseFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'adpositions' => ['baseForm', 'baseFormIpa', 'adpositionsType', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'numerals' => ['baseForm', 'baseFormIpa', 'numeralsType', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'interjections' => ['baseForm', 'baseFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'affixes' => ['baseForm', 'baseFormIpa', 'affixesType', 'pluralForm', 'pluralFormIpa', 'meaning', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'phrases' => ['baseForm', 'baseFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'names' => ['baseForm', 'baseFormIpa', 'gender', 'literalMeaningEnglish', 'additionalInformation', 'dialect', 'etymology'],
+        'daitic (obsolete)' => ['baseForm', 'baseFormIpa', 'partOfSpeech', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'codian (obsolete)' => ['baseForm', 'baseFormIpa', 'partOfSpeech', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+    ];
+
     public const TYPE_PRONOUNS = [
         'personal (1st person sg. nom.)', 'personal (2nd person sg. nom.)', 'personal (3rd person sg. nom.)', 'personal (1st person pl. nom.)', 'personal (2nd person pl. nom.)',
         'personal (3rd person pl. nom.)', 'personal (1st person sg. acc.)', 'personal (2nd person sg. acc.)', 'personal (3rd person sg. acc.)', 'personal (1st person pl. acc.)',

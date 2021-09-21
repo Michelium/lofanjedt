@@ -39,7 +39,6 @@ class DefaultController extends AbstractController {
             return $this->redirectToRoute('lofanje');
         }
 
-
         return $this->render('lofanje/index.html.twig', [
             'title' => 'lofanje',
             'categories' => Entry::CATEGORIES,
@@ -55,6 +54,7 @@ class DefaultController extends AbstractController {
         $entries = $this->getDoctrine()->getRepository(Entry::class)->findBy(['view_status' => 5, 'category' => $category]);
 
         return new JsonResponse($this->renderView('lofanje/_table.html.twig', [
+            'fields' => Entry::FIELDS[$category],
             'entries' => $entries,
         ]));
     }
