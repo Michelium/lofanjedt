@@ -26,8 +26,8 @@ class Entry {
         'affixes',
         'phrases',
         'names',
-        'daitic',
-        'codian',
+        'daitic (obsolute)',
+        'codian (obsolete)',
     ];
 
     public const TYPE_PRONOUNS = [
