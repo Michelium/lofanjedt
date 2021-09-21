@@ -26,7 +26,7 @@ class Entry {
         'affixes',
         'phrases',
         'names',
-        'daitic (obsolute)',
+        'daitic (obsolete)',
         'codian (obsolete)',
     ];
 

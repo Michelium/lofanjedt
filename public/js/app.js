@@ -92,8 +92,8 @@ function initDynamicFormFields() {
             'affixes': [fields.baseForm, fields.baseFormIpa, fields.affixesType, fields.pluralForm, fields.pluralFormIpa, fields.meaning, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
             'phrases': [fields.baseForm, fields.baseFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
             'names': [fields.baseForm, fields.baseFormIpa, fields.gender, fields.literalMeaningEnglish, fields.additionalInformation, fields.dialect, fields.etymology],
-            'daitic (obsolute)': [fields.baseForm, fields.baseFormIpa, fields.partOfSpeech, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
-            'codian (obsolute)' : [fields.baseForm, fields.baseFormIpa, fields.partOfSpeech, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'daitic (obsolete)': [fields.baseForm, fields.baseFormIpa, fields.partOfSpeech, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'codian (obsolete)' : [fields.baseForm, fields.baseFormIpa, fields.partOfSpeech, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
         };
 
         if (config[category]) {
