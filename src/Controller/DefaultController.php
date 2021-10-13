@@ -42,7 +42,7 @@ class DefaultController extends AbstractController {
             'title' => 'lofanje',
             'categories' => Entry::CATEGORIES,
             'form' => $form->createView(),
-            'totalEntries' => count($em->getRepository(Entry::class)->findAll()),
+            'totalEntries' => count($em->getRepository(Entry::class)->findBy(['view_status' => 5])),
         ]);
     }
 
