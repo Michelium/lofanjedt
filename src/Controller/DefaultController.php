@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Entry;
 use App\Form\EntryType;
-use PHPUnit\Util\Json;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,6 +42,7 @@ class DefaultController extends AbstractController {
             'title' => 'lofanje',
             'categories' => Entry::CATEGORIES,
             'form' => $form->createView(),
+            'totalEntries' => count($em->getRepository(Entry::class)->findAll()),
         ]);
     }
 

@@ -123,10 +123,6 @@ function initDynamicFormFields() {
             $(document).on('click', '.ipa-button', function () {
                 const value = $(this).data('value');
                 let elementId = $('#'+$(this).parent().data('element'));
-
-                console.log(value)
-                console.log('#'+elementId)
-
                 $(elementId).val($(elementId).val() + value);
             });
         }

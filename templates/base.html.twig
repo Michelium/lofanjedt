@@ -45,6 +45,21 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 col-md-10 mx-auto">
+            <div class="card mt-2 mt-md-4 p-3">
+                <nav class="row">
+                    <div class="col-12">
+                        {% if totalEntries is defined %}
+                            <p>total entries: {{ totalEntries }}</p>
+                        {% endif %}
+                        <p class="text-muted float-start">made possible by Michel</p>
+                        <p class="text-muted float-end">version: {{ version }}</p>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
