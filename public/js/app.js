@@ -6,6 +6,7 @@ function init() {
     initDataTable();
     initFormModal();
     initCategorySelect();
+    initExport();
     initMeasurementConverter();
     initTemperatureConverter();
 }
@@ -173,6 +174,22 @@ function initCategorySelect() {
             initDataTable();
         })
     }
+}
+
+function initExport() {
+    $('#export-category-select').select2({
+        dropdownParent: $('#exportModal'),
+        tags: true,
+    });
+
+    $('.export-form').on('change','input[name=all-categories]:checked',function(){
+        var value = $(this).val();
+        if (value === 'false') {
+            $('#export-category-select').prop('disabled', false);
+        } else {
+            $('#export-category-select').prop('disabled', true);
+        }
+    });
 }
 
 function initMeasurementConverter() {

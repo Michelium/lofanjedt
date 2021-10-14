@@ -1,0 +1,34 @@
+<div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="export-form" action="{{ path('lofanje_export') }}" method="post">
+                    <div class="form-check">
+                        <input class="form-check-input all-categories-radio" type="radio" name="all-categories" value="true" id="all-categories-true" checked>
+                        <label class="form-check-label" for="all-categories-true">
+                            export all categories
+                        </label>
+                    </div>
+                    <div class="form-check mt-3 mb-2">
+                        <input class="form-check-input all-categories-radio" type="radio" name="all-categories" value="false" id="all-categories-false">
+                        <label class="form-check-label" for="all-categories-false">
+                            select categories:
+                        </label>
+                    </div>
+                    <div class="form-group mb-4">
+                        <select name="categories[]" disabled id="export-category-select" class="form-control mt-2" multiple="multiple" style="width: 75%">
+                            {% for category in categories %}
+                                <option value="{{ category }}">{{ category }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-warning">export</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
