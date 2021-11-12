@@ -13,7 +13,7 @@ class Entry {
     public const CATEGORIES = [
         'nouns',
         'adjectives',
-        'geographical names',
+        'toponyms',
         'demonyms',
         'verbs',
         'articles',
@@ -26,14 +26,14 @@ class Entry {
         'affixes',
         'phrases',
         'names',
-        'daitic (obsolete)',
-        'codian (obsolete)',
+        'Daitic (obsolete)',
+        'Codian (obsolete)',
     ];
 
     public const FIELDS = [
         'nouns' => ['baseForm', 'baseFormIpa', 'countability', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'adjectives' => ['baseForm', 'baseFormIpa', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
-        'geographical names' => ['baseForm', 'baseFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'toponyms' => ['baseForm', 'baseFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'demonyms' => ['baseForm', 'baseFormIpa', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'verbs' => ['infinitive', 'infinitiveIpa', 'transitivity', 'conjugation', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'articles' => ['baseForm', 'baseFormIpa', 'definiteness', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
@@ -46,8 +46,8 @@ class Entry {
         'affixes' => ['baseForm', 'baseFormIpa', 'affixesType', 'pluralForm', 'pluralFormIpa', 'meaning', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'phrases' => ['baseForm', 'baseFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'names' => ['baseForm', 'baseFormIpa', 'gender', 'literalMeaningEnglish', 'additionalInformation', 'dialect', 'etymology'],
-        'daitic (obsolete)' => ['baseForm', 'baseFormIpa', 'partOfSpeech', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
-        'codian (obsolete)' => ['baseForm', 'baseFormIpa', 'partOfSpeech', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'Daitic (obsolete)' => ['baseForm', 'baseFormIpa', 'partOfSpeech', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'Codian (obsolete)' => ['baseForm', 'baseFormIpa', 'partOfSpeech', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
     ];
 
     public const TYPE_PRONOUNS = [
@@ -55,7 +55,7 @@ class Entry {
         'personal (3rd person pl. nom.)', 'personal (1st person sg. acc.)', 'personal (2nd person sg. acc.)', 'personal (3rd person sg. acc.)', 'personal (1st person pl. acc.)',
         'personal (2nd person pl. acc.)', 'personal (3rd person pl. acc.)', 'personal (1st person sg. gen.)', 'personal (2nd person sg. gen.)', 'personal (3rd person sg. gen.)',
         'personal (1st person pl. gen.)', 'personal (2nd person pl. gen.)', 'personal (3rd person pl. gen.)', 'personal (1st person sg. dat.)', 'personal (2nd person sg. dat.)',
-        'personal (3rd person sg. dat.)', 'personal (1st person pl. dat.)', 'personal (2nd person pl. dat.)', 'personal (3rd person pl. dat.)',
+        'personal (3rd person sg. dat.)', 'personal (1st person pl. dat.)', 'personal (2nd person pl. dat.)', 'personal (3rd person pl. dat.)', 'personal',
         'indefinite', 'demonstrative', 'reflexive', 'reciprocal', 'relative', 'interrogative', 'other',
     ];
     public const TYPE_CONJUNCTIONS = ['coordinating', 'temporal', 'correlative', 'subordinating'];
