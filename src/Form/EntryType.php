@@ -43,6 +43,10 @@ class EntryType extends AbstractType {
                 'label' => 'type (conjunctions)',
                 'choices' => array_combine(Entry::TYPE_CONJUNCTIONS, Entry::TYPE_CONJUNCTIONS),
             ])
+            ->add('verbalRoots', TextType::class, [
+                'label' => 'verbal roots',
+                'required' => false,
+            ])
             ->add('adpositionsType', ChoiceType::class, [
                 'required' => true,
                 'label' => 'type (adpositions)',
