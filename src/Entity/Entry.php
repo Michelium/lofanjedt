@@ -35,7 +35,7 @@ class Entry {
         'adjectives' => ['baseForm', 'baseFormIpa', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'toponyms' => ['baseForm', 'baseFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'demonyms' => ['baseForm', 'baseFormIpa', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
-        'verbs' => ['infinitive', 'infinitiveIpa', 'transitivity', 'conjugation', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
+        'verbs' => ['infinitive', 'infinitiveIpa', 'transitivity', 'conjugation', 'verbalRoots', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'articles' => ['baseForm', 'baseFormIpa', 'definiteness', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'pronouns' => ['baseForm', 'baseFormIpa', 'pronounsType', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
         'conjunctions' => ['baseForm', 'baseFormIpa', 'conjunctionsType', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
@@ -220,6 +220,11 @@ class Entry {
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $part_of_speech;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $verbal_roots;
 
     public function __construct() {
         $this->created_at = new \DateTime('now');
@@ -474,5 +479,13 @@ class Entry {
 
     public function setPartOfSpeech($part_of_speech): void {
         $this->part_of_speech = $part_of_speech;
+    }
+
+    public function getVerbalRoots() {
+        return $this->verbal_roots;
+    }
+
+    public function setVerbalRoots($verbal_roots): void {
+        $this->verbal_roots = $verbal_roots;
     }
 }
