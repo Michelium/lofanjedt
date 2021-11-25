@@ -7,6 +7,7 @@ function init() {
     initFormModal();
     initCategorySelect();
     initExport();
+    initSelect2();
     initMeasurementConverter();
     initTemperatureConverter();
 }
@@ -35,6 +36,7 @@ function initFormModal() {
                 let form = $(body).find('form');
                 $(form).attr('action', '/entry/form/' + id)
 
+                initSelect2()
                 initDynamicFormFields();
             });
     });
@@ -95,14 +97,16 @@ function initDynamicFormFields() {
             'phrases': [fields.baseForm, fields.baseFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
             'names': [fields.baseForm, fields.baseFormIpa, fields.gender, fields.literalMeaningEnglish, fields.additionalInformation, fields.dialect, fields.etymology],
             'Daitic (obsolete)': [fields.baseForm, fields.baseFormIpa, fields.partOfSpeech, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
-            'Codian (obsolete)' : [fields.baseForm, fields.baseFormIpa, fields.partOfSpeech, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
+            'Codian (obsolete)': [fields.baseForm, fields.baseFormIpa, fields.partOfSpeech, fields.pluralForm, fields.pluralFormIpa, fields.equivalentEnglish, fields.definitionEnglish, fields.equivalentOtherLanguages, fields.additionalInformation, fields.dialect, fields.etymology],
         };
 
         if (config[category]) {
             $.each(config[category], function (number, element) {
                 if (hideAllFields()) {
                     $(element).css('order', number);
-                    setTimeout(function () { $(element).show(); }, 100)
+                    setTimeout(function () {
+                        $(element).show();
+                    }, 100)
                 }
             })
             setTimeout(popovers, 100);
@@ -124,12 +128,12 @@ function initDynamicFormFields() {
 
             $(document).on('click', '.ipa-button', function () {
                 const value = $(this).data('value');
-                let elementId = $('#'+$(this).parent().data('element'));
+                let elementId = $('#' + $(this).parent().data('element'));
                 $(elementId).val($(elementId).val() + value);
             });
         }
 
-        $(document).on('click', '.ipa-popup',function () {
+        $(document).on('click', '.ipa-popup', function () {
             let body = $('.popover-body');
             $(body).html(popoverContent);
             $(body).data('element', $(this).attr('id'));
@@ -183,12 +187,49 @@ function initExport() {
         tags: true,
     });
 
-    $('.export-form').on('change','input[name=all-categories]:checked',function(){
+    $('.export-form').on('change', 'input[name=all-categories]:checked', function () {
         var value = $(this).val();
         if (value === 'false') {
             $('#export-category-select').prop('disabled', false);
         } else {
             $('#export-category-select').prop('disabled', true);
+        }
+    });
+}
+
+function initSelect2() {
+    $('#formModal').find('.select-2').each(function () {
+        const optionsObject = document.getElementById($(this).attr('id')).options;
+        let options = [];
+        for (let i = 0; i < optionsObject.length; i++) {
+            options.push(optionsObject[i].value);
+        }
+        if (!options.includes($(this).val())) {
+            let newOption = new Option($(this).val(), $(this).val(), true, true);
+            $(this).append(newOption).trigger('change');
+        }
+        console.log($(this).val())
+        console.log(options);
+
+        if ($(this).hasClass('select2-custom')) {
+            $(this).select2({
+                tags: true, createTag: function (params) {
+                    return {id: params.term, text: params.term, newOption: true}
+                }, templateResult: function (data) {
+                    var result = data.text;
+                    if (data.newOption) {
+                        result = result + ' (custom)';
+                    }
+                    return result;
+                },
+                dropdownParent: $('#formModal > .modal-dialog > .modal-content'),
+                theme: "bootstrap-5",
+            });
+        } else {
+            $('.select2').select2({
+                dropdownParent: $('#formModal > .modal-dialog > .modal-content'),
+                theme: "bootstrap-5",
+            });
         }
     });
 }

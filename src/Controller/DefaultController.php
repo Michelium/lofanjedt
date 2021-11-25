@@ -65,7 +65,7 @@ class DefaultController extends AbstractController {
     public function form(Entry $entry = null, Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(EntryType::class, $entry);
+        $form = $this->createForm(EntryType::class, $entry, ['data' => $entry]);
         $form->handleRequest($request);
 
         if (!$entry) {

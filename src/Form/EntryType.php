@@ -4,10 +4,12 @@ namespace App\Form;
 
 use App\Entity\Entry;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\ChoiceList\Loader\CallbackChoiceLoader;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Flex\Options;
 
 class EntryType extends AbstractType {
 
@@ -36,12 +38,30 @@ class EntryType extends AbstractType {
             ->add('pronounsType', ChoiceType::class, [
                 'required' => true,
                 'label' => 'type (pronouns)',
-                'choices' => array_combine(Entry::TYPE_PRONOUNS, Entry::TYPE_PRONOUNS),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::TYPE_PRONOUNS, Entry::TYPE_PRONOUNS);
+                    if ($options['data']->getPronounsType()) {
+                        $choices[$options['data']->getPronounsType()] = $options['data']->getPronounsType();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('conjunctionsType', ChoiceType::class, [
                 'required' => true,
                 'label' => 'type (conjunctions)',
-                'choices' => array_combine(Entry::TYPE_CONJUNCTIONS, Entry::TYPE_CONJUNCTIONS),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::TYPE_CONJUNCTIONS, Entry::TYPE_CONJUNCTIONS);
+                    if ($options['data']->getConjunctionsType()) {
+                        $choices[$options['data']->getConjunctionsType()] = $options['data']->getConjunctionsType();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('verbalRoots', TextType::class, [
                 'label' => 'verbal roots',
@@ -50,22 +70,58 @@ class EntryType extends AbstractType {
             ->add('adpositionsType', ChoiceType::class, [
                 'required' => true,
                 'label' => 'type (adpositions)',
-                'choices' => array_combine(Entry::TYPE_ADPOSITIONS, Entry::TYPE_ADPOSITIONS),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::TYPE_ADPOSITIONS, Entry::TYPE_ADPOSITIONS);
+                    if ($options['data']->getAdpositionsType()) {
+                        $choices[$options['data']->getAdpositionsType()] = $options['data']->getAdpositionsType();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('numeralsType', ChoiceType::class, [
                 'required' => true,
                 'label' => 'type (numerals)',
-                'choices' => array_combine(Entry::TYPE_NUMERALS, Entry::TYPE_NUMERALS),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::TYPE_NUMERALS, Entry::TYPE_NUMERALS);
+                    if ($options['data']->getNumeralsType()) {
+                        $choices[$options['data']->getNumeralsType()] = $options['data']->getNumeralsType();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('affixesType', ChoiceType::class, [
                 'required' => true,
                 'label' => 'type (affixes)',
-                'choices' => array_combine(Entry::TYPE_AFFIXES, Entry::TYPE_AFFIXES),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::TYPE_AFFIXES, Entry::TYPE_AFFIXES);
+                    if ($options['data']->getAffixesType()) {
+                        $choices[$options['data']->getAffixesType()] = $options['data']->getAffixesType();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('countability', ChoiceType::class, [
                 'label' => 'countability',
                 'required' => false,
-                'choices' => array_combine(Entry::COUNTABILITY, Entry::COUNTABILITY),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::COUNTABILITY, Entry::COUNTABILITY);
+                    if ($options['data']->getCountability()) {
+                        $choices[$options['data']->getCountability()] = $options['data']->getCountability();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('pluralForm', TextType::class, [
                 'label' => 'plural form',
@@ -117,17 +173,44 @@ class EntryType extends AbstractType {
             ->add('transitivity', ChoiceType::class, [
                 'label' => 'transitivity',
                 'required' => false,
-                'choices' => array_combine(Entry::TRANSITIVITY, Entry::TRANSITIVITY),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::TRANSITIVITY, Entry::TRANSITIVITY);
+                    if ($options['data']->getTransitivity()) {
+                        $choices[$options['data']->getTransitivity()] = $options['data']->getTransitivity();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('conjugation', ChoiceType::class, [
                 'label' => 'conjugation',
                 'required' => false,
-                'choices' => array_combine(Entry::CONJUGATION, Entry::CONJUGATION),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::CONJUGATION, Entry::CONJUGATION);
+                    if ($options['data']->getConjugation()) {
+                        $choices[$options['data']->getConjugation()] = $options['data']->getConjugation();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('definiteness', ChoiceType::class, [
                 'label' => 'definiteness',
                 'required' => false,
-                'choices' => array_combine(Entry::DEFINITENESS, Entry::DEFINITENESS),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::DEFINITENESS, Entry::DEFINITENESS);
+                    if ($options['data']->getDefiniteness()) {
+                        $choices[$options['data']->getDefiniteness()] = $options['data']->getDefiniteness();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('meaning', TextType::class, [
                 'label' => 'meaning',
@@ -136,7 +219,16 @@ class EntryType extends AbstractType {
             ->add('gender', ChoiceType::class, [
                 'label' => 'gender',
                 'required' => false,
-                'choices' => array_combine(Entry::GENDER, Entry::GENDER),
+                'choice_loader' => new CallbackChoiceLoader(function () use ($options) {
+                    $choices = array_combine(Entry::GENDER, Entry::GENDER);
+                    if ($options['data']->getGender()) {
+                        $choices[$options['data']->getGender()] = $options['data']->getGender();
+                    }
+                    return $choices;
+                }),
+                'attr' => [
+                    'class' => 'select-2 select2-custom',
+                ],
             ])
             ->add('literalMeaningEnglish', TextType::class, [
                 'label' => 'literal meaning in English',
@@ -145,13 +237,24 @@ class EntryType extends AbstractType {
             ->add('partOfSpeech', TextType::class, [
                 'label' => 'part of speech',
                 'required' => false,
-            ])
-            ;
+            ]);
+
+        $builder->get('pronounsType')->resetViewTransformers();
+        $builder->get('conjunctionsType')->resetViewTransformers();
+        $builder->get('adpositionsType')->resetViewTransformers();
+        $builder->get('numeralsType')->resetViewTransformers();
+        $builder->get('affixesType')->resetViewTransformers();
+        $builder->get('countability')->resetViewTransformers();
+        $builder->get('transitivity')->resetViewTransformers();
+        $builder->get('conjugation')->resetViewTransformers();
+        $builder->get('definiteness')->resetViewTransformers();
+        $builder->get('gender')->resetViewTransformers();
     }
 
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults([
             'data_class' => Entry::class,
+            'data' => null,
         ]);
     }
 }
