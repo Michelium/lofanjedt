@@ -6,10 +6,10 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/dashboard/admin/user")
@@ -34,7 +34,7 @@ class UserController extends AbstractController {
     /**
      * @Route("/form/{id}", name="admin_user_form", defaults={"id": 0})
      */
-    public function form($id, Request $request, UserRepository $userRepository, UserPasswordEncoderInterface $passwordEncoder) {
+    public function form($id, Request $request, UserRepository $userRepository, UserPasswordHasherInterface $passwordEncoder) {
         if (!$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash('danger', 'Access denied');
             return $this->redirectToRoute('lofanje');
@@ -49,7 +49,7 @@ class UserController extends AbstractController {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             if ($user->getPlainPassword()) {
-                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                $password = $passwordEncoder->hashPassword($user, $user->getPlainPassword());
                 $user->setPassword($password);
             }
 
@@ -76,7 +76,7 @@ class UserController extends AbstractController {
     /**
      * @Route("/{id}/delete", name="admin_user_delete")
      */
-    public function delete(Request $request, User $user) {
+    public function delete(Request $request, User $user): RedirectResponse {
         if (!$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash('danger', 'Access denied');
             return $this->redirectToRoute('lofanje');
