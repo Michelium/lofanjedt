@@ -122,14 +122,19 @@ function initDynamicFormFields() {
 
         function popovers() {
             var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl, {html: true,})
+            popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, {
+                    html: true,
+                    trigger: 'focus',
+                })
             });
 
-            $(document).on('click', '.ipa-button', function () {
+            $(document).on('click', '.ipa-button', function (e) {
                 const value = $(this).data('value');
                 let elementId = $('#' + $(this).parent().data('element'));
                 $(elementId).val($(elementId).val() + value);
+                $(elementId).focus();
+                $(elementId).trigger('click');
             });
         }
 
@@ -142,15 +147,45 @@ function initDynamicFormFields() {
         });
 
         const popoverContent = "" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ə'>ə</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ˌ'>ˌ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ˈ'>ˈ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ǝ'>ǝ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='æ'>æ</button>\n" +
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ð'>ð</button>\n" +
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɛ'>ɛ</button>\n" +
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɣ'>ɣ</button>\n" +
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ʒ'>ʒ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɲ'>ɲ</button>\n" +
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɔ'>ɔ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='œ'>œ</button>\n" +
             "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɾ'>ɾ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ʃ'>ʃ</button>\n";
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ʃ'>ʃ</button>\n" +
+            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='→'>→</button>\n"
     }
+
+    let keysPressed = {};
+
+    document.addEventListener('keydown', (event) => {
+        keysPressed[event.key] = true;
+    });
+    document.addEventListener('keyup', (event) => {
+        delete keysPressed[event.key]
+        // delete this.keysPressed[event.key];
+    });
+    document.addEventListener('keydown', (event) => {
+        keysPressed[event.key] = true;
+        console.log(event.key)
+
+        if (keysPressed['Control'] && keysPressed['Shift'] && event.key === '!') {
+            let input = $('input:focus');
+            $(input).val( $(input).val() + 'œ')
+        }
+    });
+
+    document.addEventListener('keyup', (event) => {
+        delete keysPressed[event.key];
+    });
+    
 }
 
 function initCategorySelect() {
@@ -208,8 +243,6 @@ function initSelect2() {
             let newOption = new Option($(this).val(), $(this).val(), true, true);
             $(this).append(newOption).trigger('change');
         }
-        console.log($(this).val())
-        console.log(options);
 
         if ($(this).hasClass('select2-custom')) {
             $(this).select2({
