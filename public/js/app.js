@@ -14,9 +14,12 @@ function init() {
 }
 
 function initDataTable() {
-    $('.DataTable').DataTable({
-        pageLength: 25,
-    });
+    if ( ! $.fn.DataTable.isDataTable( '.DataTable' ) ) {
+        $('.DataTable').DataTable({
+            pageLength: 25,
+        });
+    }
+    
 }
 
 function initFormModal() {
