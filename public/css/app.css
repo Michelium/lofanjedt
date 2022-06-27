@@ -20,7 +20,7 @@ body {
 }
 
 .popover {
-    max-width: 395px !important;
+    max-width: 500px !important;
 }
 
 .select2-container--default .select2-selection--single {
@@ -54,4 +54,8 @@ body {
 
 .ipa-button {
     margin-bottom: 5px;
+}
+.ipa-button.selected {
+    border-color: orange;
+    background-color: #444;
 }

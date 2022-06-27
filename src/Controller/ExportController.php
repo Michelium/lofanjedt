@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Entry;
+use Doctrine\ORM\EntityManagerInterface;
 use PhpOffice\PhpSpreadsheet\Exception;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
@@ -13,6 +14,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ExportController extends AbstractController {
+
+    public function __construct(
+        private EntityManagerInterface $entityManager,
+    ) {
+    }
 
     /**
      * @Route("/lofanje/export", name="lofanje_export")
@@ -79,13 +85,13 @@ class ExportController extends AbstractController {
         $allCategories = $request->get('all-categories');
 
         if ($allCategories === 'true') {
-            $entries = $this->getDoctrine()->getRepository(Entry::class)->findBy(['view_status' => 5]);
+            $entries = $this->entityManager->getRepository(Entry::class)->findBy(['view_status' => 5]);
         } else {
             $categories = $request->get('categories');
             if (!$categories) {
                 throw new NotFoundHttpException();
             }
-            $entries = $this->getDoctrine()->getRepository(Entry::class)->findBy(['category' => $categories]);
+            $entries = $this->entityManager->getRepository(Entry::class)->findBy(['category' => $categories]);
         }
 
         $entryList = [];

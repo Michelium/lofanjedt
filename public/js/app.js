@@ -5,6 +5,7 @@ $(document).ready(function () {
 function init() {
     initDataTable();
     initFormModal();
+    initShortcutKeys();
     initCategorySelect();
     initExport();
     initSelect2();
@@ -129,9 +130,10 @@ function initDynamicFormFields() {
                 })
             });
 
-            $(document).on('click', '.ipa-button', function (e) {
+            $('.ipa-button').off();
+            $(document).on('click', '.ipa-button', function () {
                 const value = $(this).data('value');
-                let elementId = $('#' + $(this).parent().data('element'));
+                let elementId = $('#' + $(this).closest('.popover-body').data('element'));
                 $(elementId).val($(elementId).val() + value);
                 $(elementId).focus();
                 $(elementId).trigger('click');
@@ -140,29 +142,16 @@ function initDynamicFormFields() {
 
         $(document).on('click', '.ipa-popup', function () {
             let body = $('.popover-body');
-            $(body).html(popoverContent);
+            let content = $('.popover-buttons').html();
+            $(body).html(content);
             $(body).data('element', $(this).attr('id'));
             $(body).attr('data-element', $(this).attr('id'));
 
         });
-
-        const popoverContent = "" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ˌ'>ˌ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ˈ'>ˈ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ǝ'>ǝ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='æ'>æ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ð'>ð</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɛ'>ɛ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɣ'>ɣ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ʒ'>ʒ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɲ'>ɲ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɔ'>ɔ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='œ'>œ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ɾ'>ɾ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='ʃ'>ʃ</button>\n" +
-            "<button class='btn btn-outline-secondary text-white ipa-button' type='button' data-value='→'>→</button>\n"
     }
+}
 
+function initShortcutKeys() {
     let keysPressed = {};
 
     document.addEventListener('keydown', (event) => {
@@ -170,22 +159,35 @@ function initDynamicFormFields() {
     });
     document.addEventListener('keyup', (event) => {
         delete keysPressed[event.key]
-        // delete this.keysPressed[event.key];
     });
     document.addEventListener('keydown', (event) => {
         keysPressed[event.key] = true;
-        console.log(event.key)
+        let input = $('input:focus');
+        let character = null;
 
-        if (keysPressed['Control'] && keysPressed['Shift'] && event.key === '!') {
-            let input = $('input:focus');
-            $(input).val( $(input).val() + 'œ')
+        if (keysPressed['Control'] && keysPressed['Shift']) {
+            switch (event.key) {
+                case '!': character = '«'; break;
+                case '@': character = '»'; break;
+                case '#': character = 'ˌ'; break;
+                case '$': character = 'ˈ'; break;
+                case '%': character = 'ð'; break;
+                case 'Dead': character = 'ɛ'; break;
+                case '&': character = 'ɣ'; break;
+                case '*': character = 'ɔ'; break;
+                case '(': character = 'ɾ'; break;
+                case ')': character = 'ʃ'; break;
+            }
+        }
+        
+        if (character !== null) {
+            $(input).val( $(input).val() + character)
         }
     });
 
     document.addEventListener('keyup', (event) => {
         delete keysPressed[event.key];
     });
-    
 }
 
 function initCategorySelect() {

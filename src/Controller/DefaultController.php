@@ -4,14 +4,21 @@ namespace App\Controller;
 
 use App\Entity\Entry;
 use App\Form\EntryType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
 class DefaultController extends AbstractController {
+    
+    public function __construct(
+        private EntityManagerInterface $entityManager,
+    ) {
+    }
 
     /**
      * @Route("/", name="index")
@@ -24,16 +31,14 @@ class DefaultController extends AbstractController {
      * @Route("/lofanje", name="lofanje")
      */
     public function lofanje(Request $request): Response {
-        $em = $this->getDoctrine()->getManager();
-
         $entry = new Entry();
         $form = $this->createForm(EntryType::class, $entry);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $em->persist($entry);
-            $em->flush();
+            $this->entityManager->persist($entry);
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('lofanje');
         }
@@ -42,16 +47,16 @@ class DefaultController extends AbstractController {
             'title' => 'lofanje',
             'categories' => Entry::CATEGORIES,
             'form' => $form->createView(),
-            'totalEntries' => count($em->getRepository(Entry::class)->findBy(['view_status' => 5])),
+            'totalEntries' => count($this->entityManager->getRepository(Entry::class)->findBy(['view_status' => 5])),
         ]);
     }
 
     /**
      * @Route("/lofanje/get-table", name="lofanje_get_table")
      */
-    public function getTable(Request $request) {
+    public function getTable(Request $request): JsonResponse {
         $category = $request->get('category');
-        $entries = $this->getDoctrine()->getRepository(Entry::class)->findBy(['view_status' => 5, 'category' => $category]);
+        $entries = $this->entityManager->getRepository(Entry::class)->findBy(['view_status' => 5, 'category' => $category]);
 
         return new JsonResponse($this->renderView('lofanje/_table.html.twig', [
             'fields' => Entry::FIELDS[$category],
@@ -62,9 +67,7 @@ class DefaultController extends AbstractController {
     /**
      * @Route("/entry/form/{id}", name="entry_form")
      */
-    public function form(Entry $entry = null, Request $request) {
-        $em = $this->getDoctrine()->getManager();
-
+    public function form(Entry $entry = null, Request $request): RedirectResponse {
         $form = $this->createForm(EntryType::class, $entry, ['data' => $entry]);
         $form->handleRequest($request);
 
@@ -74,8 +77,8 @@ class DefaultController extends AbstractController {
             $entry->setModifiedAt(new \DateTime('now'));
         }
 
-        $em->persist($entry);
-        $em->flush();
+        $this->entityManager->persist($entry);
+        $this->entityManager->flush();
 
         $this->addFlash('success', 'saved successfully');
         return $this->redirectToRoute('lofanje');
@@ -84,9 +87,9 @@ class DefaultController extends AbstractController {
     /**
      * @Route("/entry/get-form", name="entry_get_form")
      */
-    public function getForm(Request $request) {
+    public function getForm(Request $request): JsonResponse {
         $id = $request->get('id');
-        $entry = $id == 0 ? new Entry() : $this->getDoctrine()->getRepository(Entry::class)->find($id);
+        $entry = $id == 0 ? new Entry() : $this->entityManager->getRepository(Entry::class)->find($id);
 
         $form = $this->createForm(EntryType::class, $entry);
 
@@ -98,14 +101,12 @@ class DefaultController extends AbstractController {
     /**
      * @Route("/entry/delete/{id}", name="entry_delete")
      */
-    public function delete(Entry $entry) {
-        $em = $this->getDoctrine()->getManager();
-
+    public function delete(Entry $entry): RedirectResponse {
         $entry->setViewStatus(1);
         $entry->setModifiedAt(new \DateTime('now'));
 
-        $em->persist($entry);
-        $em->flush();
+        $this->entityManager->persist($entry);
+        $this->entityManager->flush();
 
         $this->addFlash('success', 'deleted successfully');
 
@@ -115,7 +116,7 @@ class DefaultController extends AbstractController {
     /**
      * @Route("/{slug}", name="pages", priority="-1")
      */
-    public function pages($slug, Environment $environment) {
+    public function pages($slug, Environment $environment): RedirectResponse|Response {
         if ($environment->getLoader()->exists('pages/' . $slug . '.html.twig')) {
             return $this->render('pages/' . $slug . '.html.twig', [
                 'title' => $slug,

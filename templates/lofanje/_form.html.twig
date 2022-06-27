@@ -6,6 +6,9 @@
 </div>
 <hr>
 <div class="form-wrap">
+    <div class="popover-buttons d-none">
+        {% include 'lofanje/_popover_chars.html.twig'|raw %}
+    </div>
     {% for key, field in form.children|slice(1)|slice(0, -1) %}
         <div class="row">
             <div class="col-sm-2 col-form-label">

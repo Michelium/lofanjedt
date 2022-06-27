@@ -23,6 +23,13 @@ class EntryType extends AbstractType {
             ->add('baseForm', TextType::class, [
                 'label' => 'base form',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('baseFormIpa', TextType::class, [
                 'label' => 'base form IPA',
@@ -66,6 +73,13 @@ class EntryType extends AbstractType {
             ->add('verbalRoots', TextType::class, [
                 'label' => 'verbal roots',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('adpositionsType', ChoiceType::class, [
                 'required' => true,
@@ -126,6 +140,13 @@ class EntryType extends AbstractType {
             ->add('pluralForm', TextType::class, [
                 'label' => 'plural form',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('pluralFormIpa', TextType::class, [
                 'label' => 'plural form IPA',
@@ -141,34 +162,90 @@ class EntryType extends AbstractType {
             ->add('equivalentEnglish', TextType::class, [
                 'label' => 'equivalent(s) in English',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('definitionEnglish', TextType::class, [
                 'label' => 'definition in English',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('equivalentOtherLanguages', TextType::class, [
                 'label' => 'equivalent(s) in other language(s)',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('additionalInformation', TextType::class, [
                 'label' => 'additional information',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('dialect', TextType::class, [
                 'label' => 'dialect',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('etymology', TextType::class, [
                 'label' => 'etymology',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('infinitive', TextType::class, [
                 'label' => 'infinitive',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('infinitiveIpa', TextType::class, [
                 'label' => 'infinitive IPA',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('transitivity', ChoiceType::class, [
                 'label' => 'transitivity',
@@ -215,6 +292,13 @@ class EntryType extends AbstractType {
             ->add('meaning', TextType::class, [
                 'label' => 'meaning',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('gender', ChoiceType::class, [
                 'label' => 'gender',
@@ -233,10 +317,24 @@ class EntryType extends AbstractType {
             ->add('literalMeaningEnglish', TextType::class, [
                 'label' => 'literal meaning in English',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ])
             ->add('partOfSpeech', TextType::class, [
                 'label' => 'part of speech',
                 'required' => false,
+                'attr' => [
+                    'class' => 'ipa-popup',
+                    'data-bs-toggle' => "popover",
+                    'data-bs-content' => '1',
+                    'data-bs-placement' => 'bottom',
+                    'data-bs-container' => 'body',
+                ],
             ]);
 
         $builder->get('pronounsType')->resetViewTransformers();
