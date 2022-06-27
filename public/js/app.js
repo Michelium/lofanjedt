@@ -198,6 +198,9 @@ function initCategorySelect() {
         const category = sessionStorage.getItem('category');
         updateTable(category);
         $('#category-select').val(category);
+    } else {
+        sessionStorage.setItem('category', 'nouns');
+        updateTable('nouns');
     }
 
     $(document).on('change', '#category-select', function () {
