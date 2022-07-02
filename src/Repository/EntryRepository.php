@@ -4,7 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Entry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Entry|null find($id, $lockMode = null, $lockVersion = null)
@@ -13,6 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Entry[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class EntryRepository extends ServiceEntityRepository {
+
     public function __construct(ManagerRegistry $registry) {
         parent::__construct($registry, Entry::class);
     }
@@ -27,6 +31,15 @@ class EntryRepository extends ServiceEntityRepository {
             ->groupBy('e.category')
             ->getQuery()
             ->getResult();
+    }
+
+    public function getTotalEntries(): ?int {
+        $qb = $this->createQueryBuilder('e');
+        $qb->select('COUNT(e.id)');
+        $qb->andWhere('e.view_status = 5');
+        $qb->andWhere($qb->expr()->notIn('e.category', ['Daitic (obsolete)', 'Codian (obsolete)']));
+
+        return $qb->getQuery()->getSingleScalarResult();
     }
 
     /*

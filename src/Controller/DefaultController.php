@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Entry;
 use App\Form\EntryType;
+use App\Repository\EntryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,9 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
 class DefaultController extends AbstractController {
-    
+
     public function __construct(
         private EntityManagerInterface $entityManager,
+        private EntryRepository        $entryRepository
     ) {
     }
 
@@ -47,7 +49,7 @@ class DefaultController extends AbstractController {
             'title' => 'lofanje',
             'categories' => Entry::CATEGORIES,
             'form' => $form->createView(),
-            'totalEntries' => count($this->entityManager->getRepository(Entry::class)->findBy(['view_status' => 5])),
+            'totalEntries' => $this->entryRepository->getTotalEntries(),
         ]);
     }
 
