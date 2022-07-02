@@ -1,4 +1,4 @@
-{% set version = '1.1.2' %}
+{% set version = '1.1.3' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="/css/select2.min.css">
-    <link rel="stylesheet" href="/css/select2-bootstrap-5-theme.min.css" />
+    <link rel="stylesheet" href="/css/select2-bootstrap-5-theme.min.css"/>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/jquery-3.5.1.js"></script>
     <script src="/js/jquery.dataTables.min.js"></script>
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <footer class="row">
         <div class="col-12 col-md-10 mx-auto">
             <div class="card mt-2 mt-md-4 p-3">
                 <nav class="row">
@@ -56,13 +56,20 @@
                         {% if totalEntries is defined %}
                             <p>total entries: {{ totalEntries }}</p>
                         {% endif %}
-                        <p class="text-muted float-start">made possible by Michel <br>proudly made in the Netherlands <img style="width: 15px" src="{{ asset('images/nl_flag.svg') }}" alt="NL"></p>
-                        <p class="text-muted float-end">version: {{ version }}</p>
+                        <div>
+                            <div class="textDiv my-2">
+                                <p class="text-muted float-start text1">bocesu ol Michel <br>ut Olandje bocesu <img style="width: 15px" src="{{ asset('images/nl_flag.svg') }}" alt="NL"></p>
+                            </div>
+                            <div class="textDiv my-2">
+
+                                <p class="text-muted float-start text2">made possible by Michel <br>proudly made in the Netherlands <img style="width: 15px" src="{{ asset('images/nl_flag.svg') }}" alt="NL"></p>
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </div>
         </div>
-    </div>
+    </footer>
 </div>
 </body>
 </html>

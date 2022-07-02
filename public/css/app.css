@@ -59,3 +59,22 @@ body {
     border-color: orange;
     background-color: #444;
 }
+
+footer .card {
+    min-height: 120px;
+}
+.textDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 40px;
+    width: 100%;
+    color: #fff;
+    -webkit-transform: translateX(-50%) translatey(-50%);
+    -moz-transform: translateX(-50%) translatey(-50%);
+    transform: translateX(-50%) translatey(-50%);
+    padding-left: 15px;
+}
+.text2 {
+    opacity: 0;
+}
