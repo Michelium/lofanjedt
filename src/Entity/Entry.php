@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Entry {
 
+    // This categories array is also used in the API call that returns categories
     public const CATEGORIES = [
         'nouns',
         'adjectives',
