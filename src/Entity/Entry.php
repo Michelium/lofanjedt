@@ -51,6 +51,26 @@ class Entry {
         'Codian (obsolete)' => ['baseForm', 'baseFormIpa', 'partOfSpeech', 'pluralForm', 'pluralFormIpa', 'equivalentEnglish', 'definitionEnglish', 'equivalentOtherLanguages', 'additionalInformation', 'dialect', 'etymology'],
     ];
 
+    public const HUMAN_FIELDS = [
+        'nouns' => ['base form', 'base form IPA', 'countability', 'plural form', 'plural form IPA', 'equivalent English', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'adjectives' => ['base form', 'base form IPA', 'plural form', 'plural form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'toponyms' => ['base form', 'base form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'demonyms' => ['base form', 'base form IPA', 'plural form', 'plural form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'verbs' => ['infinitive', 'infinitive IPA', 'transitivity', 'conjugation', 'verbalRoots', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'articles' => ['base form', 'base form IPA', 'definiteness', 'plural form', 'plural form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'pronouns' => ['base form', 'base form IPA', 'pronounsType', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'conjunctions' => ['base form', 'base form IPA', 'conjunctions type', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'adverbs' => ['base form', 'base form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'adpositions' => ['base form', 'base form IPA', 'adpositionsType', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'numerals' => ['base form', 'base form IPA', 'numeralsType', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'interjections' => ['base form', 'base form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'affixes' => ['base form', 'base form IPA', 'affixesType', 'plural form', 'plural form IPA', 'meaning', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'phrases' => ['base form', 'base form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'names' => ['base form', 'base form IPA', 'gender', 'literal meaning English', 'additional information', 'dialect', 'etymology'],
+        'Daitic (obsolete)' => ['base form', 'base form IPA', 'part of speech', 'plural form', 'plural form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+        'Codian (obsolete)' => ['base form', 'base form IPA', 'part of speech', 'plural form', 'plural form IPA', 'equivalent english', 'definition English', 'equivalent other languages', 'additional information', 'dialect', 'etymology'],
+    ];
+
     public const TYPE_PRONOUNS = [
         'personal (1st person sg. nom.)', 'personal (2nd person sg. nom.)', 'personal (3rd person sg. nom.)', 'personal (1st person pl. nom.)', 'personal (2nd person pl. nom.)',
         'personal (3rd person pl. nom.)', 'personal (1st person sg. acc.)', 'personal (2nd person sg. acc.)', 'personal (3rd person sg. acc.)', 'personal (1st person pl. acc.)',
