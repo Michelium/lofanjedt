@@ -29,8 +29,10 @@ class EntryProvider extends AbstractController {
 
 
     #[Route('/entries/{category}', name: 'api-entries-get', methods: 'GET')]
-    public function get(string $category): JsonResponse {
-        $entries = $this->entityManager->getRepository(Entry::class)->findBy(['view_status' => 5, 'category' => $category]);
+    public function get(Request $request, string $category): JsonResponse {
+        $keyword = $request->get('keyword');
+        $entries = $this->entityManager->getRepository(Entry::class)->getEntriesByCategories($category, $keyword);
+        
         return new JsonResponse($this->serializer->toArray($entries));
     }
 

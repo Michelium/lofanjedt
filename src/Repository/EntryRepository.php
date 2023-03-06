@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Entry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\expr;
 
 /**
  * @method Entry|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,16 +19,27 @@ class EntryRepository extends ServiceEntityRepository {
         parent::__construct($registry, Entry::class);
     }
 
-    public function getEntriesByCategories($value) {
-        return $this->createQueryBuilder('e')
-            ->where('e.view_status = 5')
-            ->andWhere('e.category IN (:val)')
-            ->setParameter('val', $value)
-            //->orderBy('e.id', 'ASC')
-            //->setMaxResults(10)
-            ->groupBy('e.category')
-            ->getQuery()
-            ->getResult();
+    public function getEntriesByCategories(string $category, string $keyword = null) {
+        $qb = $this->createQueryBuilder('e');
+        $qb->andWhere('e.view_status = 5');
+        $qb->andWhere('e.category IN (:val)');
+        
+        if ($keyword !== null) {
+            $qb->andWhere(
+                $qb->expr()->orX(
+                    $qb->expr()->like('e.base_form', ':keyword'),
+                    $qb->expr()->like('e.infinitive', ':keyword')
+                )
+            );
+            
+            $qb->setParameter('keyword', "%{$keyword}%");
+        }
+        
+        $qb->setParameter('val', $category);
+        $qb->addOrderBy('e.base_form', 'ASC');
+        $qb->addOrderBy('e.infinitive', 'ASC');
+
+        return $qb->getQuery()->getResult();
     }
 
     public function getTotalEntries(): ?int {
@@ -38,16 +50,4 @@ class EntryRepository extends ServiceEntityRepository {
 
         return $qb->getQuery()->getSingleScalarResult();
     }
-
-    /*
-    public function findOneBySomeField($value): ?Entry
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
