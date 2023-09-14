@@ -28,7 +28,9 @@ class EntryRepository extends ServiceEntityRepository {
             $qb->andWhere(
                 $qb->expr()->orX(
                     $qb->expr()->like('e.base_form', ':keyword'),
-                    $qb->expr()->like('e.infinitive', ':keyword')
+                    $qb->expr()->like('e.infinitive', ':keyword'),
+                    $qb->expr()->like('e.equivalent_english', ':keyword'),
+                    $qb->expr()->like('e.equivalent_other_languages', ':keyword'),
                 )
             );
             
