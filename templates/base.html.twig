@@ -28,13 +28,29 @@
             <div class="col-12 col-md-10 mx-auto">
                 <div class="card mt-2 mt-md-4 p-3">
                     <nav class="row">
-                        <div class="col-12">
-                            {% if app.user.granted('ROLE_ADMIN') %}
-                                <a type="button" href="{{ path('admin_user_index') }}" class="btn btn-outline-danger float-end">users</a>
-                            {% endif %}
-                            <a type="button" href="{{ path('lofanje') }}" class="btn btn-outline-light px-4">lofanje</a>
-                            <a type="button" href="{{ path('pages', {'slug': 'converters'}) }}" class="btn btn-outline-light px-4 mx-3">oplacale</a>
-                        </div>
+                        <div class="col-12 d-flex justify-content-between">
+                            <div>
+								<a type="button" href="{{ path('lofanje') }}" class="btn btn-outline-light px-4">lofanje</a>
+								<a type="button" href="{{ path('pages', {'slug': 'converters'}) }}" class="btn btn-outline-light px-4 mx-3">oplacale</a>
+							</div>
+							<div class="d-flex flex-row gap-2">
+								{% if languages.languages %}
+									<div class="dropdown">
+										<button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownLanguageMenu" data-bs-toggle="dropdown" aria-expanded="false">
+											{{ app.user.language.name|default('Change language') }}
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropdownLanguageMenu">
+											{% for language in languages.languages %}
+											 	<li><a class="dropdown-item" href="{{ path('lofanje_set_language', {'language': language.id}) }}">{{ language.name }}</a></li> 
+											{% endfor %}
+										</ul>
+									</div>
+								{% endif %}
+								{% if app.user.granted('ROLE_ADMIN') %}
+									<a type="button" href="{{ path('admin_user_index') }}" class="btn btn-outline-danger">users</a>
+								{% endif %}
+							</div>
+						</div>
                     </nav>
                 </div>
             </div>

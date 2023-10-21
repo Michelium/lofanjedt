@@ -28,6 +28,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
     #[Assert\Length(max: 4096)]
     private $plainPassword;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Language $language = null;
+
     public function getId(): ?int {
         return $this->id;
     }
@@ -112,5 +115,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
 
     public function isGranted($role) {
         return in_array($role, $this->getRoles());
+    }
+
+    public function getLanguage(): ?Language
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(?Language $language): static
+    {
+        $this->language = $language;
+
+        return $this;
     }
 }

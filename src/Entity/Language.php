@@ -21,9 +21,13 @@ class Language {
     #[ORM\OneToMany(mappedBy: 'language', targetEntity: Entry::class)]
     private Collection $entries;
 
+    #[ORM\OneToMany(mappedBy: 'language', targetEntity: User::class)]
+    private Collection $users;
+
     public function __construct()
     {
         $this->entries = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int {
@@ -64,6 +68,36 @@ class Language {
             // set the owning side to null (unless already changed)
             if ($entry->getLanguage() === $this) {
                 $entry->setLanguage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setLanguage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getLanguage() === $this) {
+                $user->setLanguage(null);
             }
         }
 
