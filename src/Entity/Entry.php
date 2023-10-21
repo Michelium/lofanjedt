@@ -5,9 +5,7 @@ namespace App\Entity;
 use App\Repository\EntryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=EntryRepository::class)
- */
+#[ORM\Entity(repositoryClass: EntryRepository::class)]
 class Entry {
 
     // This categories array is also used in the API call that returns categories
@@ -90,162 +88,103 @@ class Entry {
     public const CONJUGATION = ['regular', 'regular + «xa»', 'irregular', 'impersonal'];
     public const GENDER = ['male', 'female'];
 
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue]
+    private int $id;
+    
+    #[ORM\ManyToOne(inversedBy: 'entries')]
+    private Language $language;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $created_at;
+    #[ORM\Column(type: "datetime")]
+    private \DateTime $created_at;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $modified_at;
+    #[ORM\Column(type: "datetime", nullable: true)]
+    private \DateTime $modified_at;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $view_status = 5;
+    #[ORM\Column(type: "integer")]
+    private int $view_status = 5;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $category;
+    #[ORM\Column(type: "string", length: 255)]
+    private ?string $category;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $base_form;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $base_form;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $base_form_ipa;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $base_form_ipa;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $countability;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $countability;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $plural_form;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $plural_form;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $plural_form_ipa;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $plural_form_ipa;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $equivalent_english;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $equivalent_english;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $definition_english;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $definition_english;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $equivalent_other_languages;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $equivalent_other_languages;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $additional_information;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $additional_information;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $dialect;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $dialect;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $etymology;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $etymology;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $infinitive;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $infinitive;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $infinitive_ipa;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $infinitive_ipa;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $transitivity;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $transitivity;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $conjugation;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $conjugation;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $definiteness;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $definiteness;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $meaning;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $meaning;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $gender;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $gender;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $literal_meaning_english;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $literal_meaning_english;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $pronouns_type;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $pronouns_type;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $conjunctions_type;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $conjunctions_type;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $adpositions_type;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $adpositions_type;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $numerals_type;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $numerals_type;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $affixes_type;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $affixes_type;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $part_of_speech;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $part_of_speech;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $verbal_roots;
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $verbal_roots;
 
     public function __construct() {
         $this->created_at = new \DateTime('now');
@@ -508,5 +447,17 @@ class Entry {
 
     public function setVerbalRoots($verbal_roots): void {
         $this->verbal_roots = $verbal_roots;
+    }
+
+    public function getLanguage(): ?Language
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(?Language $language): static
+    {
+        $this->language = $language;
+
+        return $this;
     }
 }
