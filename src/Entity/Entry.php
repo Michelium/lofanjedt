@@ -92,7 +92,7 @@ class Entry {
     #[ORM\Column(type: "integer")]
     #[ORM\GeneratedValue]
     private int $id;
-    
+
     #[ORM\ManyToOne(inversedBy: 'entries')]
     private Language $language;
 
@@ -109,122 +109,130 @@ class Entry {
     private ?string $category;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $base_form;
+    private ?string $base_form = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $base_form_ipa;
+    private ?string $base_form_ipa = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $countability;
+    private ?string $countability = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $plural_form;
+    private ?string $plural_form = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $plural_form_ipa;
+    private ?string $plural_form_ipa = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $equivalent_english;
+    private ?string $equivalent_english = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $definition_english;
+    private ?string $definition_english = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $equivalent_other_languages;
+    private ?string $equivalent_other_languages = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $additional_information;
+    private ?string $additional_information = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $dialect;
+    private ?string $dialect = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $etymology;
+    private ?string $etymology = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $infinitive;
+    private ?string $infinitive = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $infinitive_ipa;
+    private ?string $infinitive_ipa = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $transitivity;
+    private ?string $transitivity = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $conjugation;
+    private ?string $conjugation = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $definiteness;
+    private ?string $definiteness = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $meaning;
+    private ?string $meaning = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $gender;
+    private ?string $gender = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $literal_meaning_english;
+    private ?string $literal_meaning_english = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $pronouns_type;
+    private ?string $pronouns_type = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $conjunctions_type;
+    private ?string $conjunctions_type = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $adpositions_type;
+    private ?string $adpositions_type = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $numerals_type;
+    private ?string $numerals_type = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $affixes_type;
+    private ?string $affixes_type = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $part_of_speech;
+    private ?string $part_of_speech = null;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $verbal_roots;
+    private ?string $verbal_roots = null;
 
     public function __construct() {
         $this->created_at = new \DateTime('now');
     }
 
-    public function setId($id): void {
-        $this->id = $id;
-    }
-
-    public function getId(): ?int {
+    public function getId(): int {
         return $this->id;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface {
+    public function setId(int $id): Entry {
+        $this->id = $id;
+        return $this;
+    }
+    
+    public function getLanguage(): ?Language {
+        return $this->language;
+    }
+
+    public function setLanguage(?Language $language): static {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): \DateTime {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self {
+    public function setCreatedAt(\DateTime $created_at): Entry {
         $this->created_at = $created_at;
-
         return $this;
     }
 
-    public function getModifiedAt(): ?\DateTimeInterface {
+    public function getModifiedAt(): \DateTime {
         return $this->modified_at;
     }
 
-    public function setModifiedAt(?\DateTimeInterface $modified_at): self {
+    public function setModifiedAt(\DateTime $modified_at): Entry {
         $this->modified_at = $modified_at;
-
         return $this;
     }
 
-    public function getViewStatus(): ?int {
+    public function getViewStatus(): int {
         return $this->view_status;
     }
 
-    public function setViewStatus(int $view_status): self {
+    public function setViewStatus(int $view_status): Entry {
         $this->view_status = $view_status;
-
         return $this;
     }
 
@@ -232,9 +240,8 @@ class Entry {
         return $this->category;
     }
 
-    public function setCategory(string $category): self {
+    public function setCategory(?string $category): Entry {
         $this->category = $category;
-
         return $this;
     }
 
@@ -242,9 +249,8 @@ class Entry {
         return $this->base_form;
     }
 
-    public function setBaseForm(?string $base_form): self {
+    public function setBaseForm(?string $base_form): Entry {
         $this->base_form = $base_form;
-
         return $this;
     }
 
@@ -252,212 +258,224 @@ class Entry {
         return $this->base_form_ipa;
     }
 
-    public function setBaseFormIpa(?string $base_form_ipa): self {
+    public function setBaseFormIpa(?string $base_form_ipa): Entry {
         $this->base_form_ipa = $base_form_ipa;
         return $this;
     }
 
-    public function getCountability() {
+    public function getCountability(): ?string {
         return $this->countability;
     }
 
-    public function setCountability($countability): void {
+    public function setCountability(?string $countability): Entry {
         $this->countability = $countability;
+        return $this;
     }
 
-    public function getPluralForm() {
+    public function getPluralForm(): ?string {
         return $this->plural_form;
     }
 
-    public function setPluralForm($plural_form): void {
+    public function setPluralForm(?string $plural_form): Entry {
         $this->plural_form = $plural_form;
+        return $this;
     }
 
-    public function getPluralFormIpa() {
+    public function getPluralFormIpa(): ?string {
         return $this->plural_form_ipa;
     }
 
-    public function setPluralFormIpa($plural_form_ipa): void {
+    public function setPluralFormIpa(?string $plural_form_ipa): Entry {
         $this->plural_form_ipa = $plural_form_ipa;
+        return $this;
     }
 
-    public function getEquivalentEnglish() {
+    public function getEquivalentEnglish(): ?string {
         return $this->equivalent_english;
     }
 
-    public function setEquivalentEnglish($equivalent_english): void {
+    public function setEquivalentEnglish(?string $equivalent_english): Entry {
         $this->equivalent_english = $equivalent_english;
+        return $this;
     }
 
-    public function getDefinitionEnglish() {
+    public function getDefinitionEnglish(): ?string {
         return $this->definition_english;
     }
 
-    public function setDefinitionEnglish($definition_english): void {
+    public function setDefinitionEnglish(?string $definition_english): Entry {
         $this->definition_english = $definition_english;
+        return $this;
     }
 
-    public function getEquivalentOtherLanguages() {
+    public function getEquivalentOtherLanguages(): ?string {
         return $this->equivalent_other_languages;
     }
 
-    public function setEquivalentOtherLanguages($equivalent_other_languages): void {
+    public function setEquivalentOtherLanguages(?string $equivalent_other_languages): Entry {
         $this->equivalent_other_languages = $equivalent_other_languages;
+        return $this;
     }
 
-    public function getAdditionalInformation() {
+    public function getAdditionalInformation(): ?string {
         return $this->additional_information;
     }
 
-    public function setAdditionalInformation($additional_information): void {
+    public function setAdditionalInformation(?string $additional_information): Entry {
         $this->additional_information = $additional_information;
+        return $this;
     }
 
-    public function getDialect() {
+    public function getDialect(): ?string {
         return $this->dialect;
     }
 
-    public function setDialect($dialect): void {
+    public function setDialect(?string $dialect): Entry {
         $this->dialect = $dialect;
+        return $this;
     }
 
-    public function getEtymology() {
+    public function getEtymology(): ?string {
         return $this->etymology;
     }
 
-    public function setEtymology($etymology): void {
+    public function setEtymology(?string $etymology): Entry {
         $this->etymology = $etymology;
+        return $this;
     }
 
-    public function getInfinitive() {
+    public function getInfinitive(): ?string {
         return $this->infinitive;
     }
 
-    public function setInfinitive($infinitive): void {
+    public function setInfinitive(?string $infinitive): Entry {
         $this->infinitive = $infinitive;
+        return $this;
     }
 
-    public function getInfinitiveIpa() {
+    public function getInfinitiveIpa(): ?string {
         return $this->infinitive_ipa;
     }
 
-    public function setInfinitiveIpa($infinitive_ipa): void {
+    public function setInfinitiveIpa(?string $infinitive_ipa): Entry {
         $this->infinitive_ipa = $infinitive_ipa;
+        return $this;
     }
 
-    public function getTransitivity() {
+    public function getTransitivity(): ?string {
         return $this->transitivity;
     }
 
-    public function setTransitivity($transitivity): void {
+    public function setTransitivity(?string $transitivity): Entry {
         $this->transitivity = $transitivity;
+        return $this;
     }
 
-    public function getConjugation() {
+    public function getConjugation(): ?string {
         return $this->conjugation;
     }
 
-    public function setConjugation($conjugation): void {
+    public function setConjugation(?string $conjugation): Entry {
         $this->conjugation = $conjugation;
+        return $this;
     }
 
-    public function getDefiniteness() {
+    public function getDefiniteness(): ?string {
         return $this->definiteness;
     }
 
-    public function setDefiniteness($definiteness): void {
+    public function setDefiniteness(?string $definiteness): Entry {
         $this->definiteness = $definiteness;
+        return $this;
     }
 
-    public function getMeaning() {
+    public function getMeaning(): ?string {
         return $this->meaning;
     }
 
-    public function setMeaning($meaning): void {
+    public function setMeaning(?string $meaning): Entry {
         $this->meaning = $meaning;
+        return $this;
     }
 
-    public function getGender() {
+    public function getGender(): ?string {
         return $this->gender;
     }
 
-    public function setGender($gender): void {
+    public function setGender(?string $gender): Entry {
         $this->gender = $gender;
+        return $this;
     }
 
-    public function getLiteralMeaningEnglish() {
+    public function getLiteralMeaningEnglish(): ?string {
         return $this->literal_meaning_english;
     }
 
-    public function setLiteralMeaningEnglish($literal_meaning_english): void {
+    public function setLiteralMeaningEnglish(?string $literal_meaning_english): Entry {
         $this->literal_meaning_english = $literal_meaning_english;
+        return $this;
     }
 
-    public function getPronounsType() {
+    public function getPronounsType(): ?string {
         return $this->pronouns_type;
     }
 
-    public function setPronounsType($pronouns_type): void {
+    public function setPronounsType(?string $pronouns_type): Entry {
         $this->pronouns_type = $pronouns_type;
+        return $this;
     }
 
-    public function getConjunctionsType() {
+    public function getConjunctionsType(): ?string {
         return $this->conjunctions_type;
     }
 
-    public function setConjunctionsType($conjunctions_type): void {
+    public function setConjunctionsType(?string $conjunctions_type): Entry {
         $this->conjunctions_type = $conjunctions_type;
+        return $this;
     }
 
-    public function getAdpositionsType() {
+    public function getAdpositionsType(): ?string {
         return $this->adpositions_type;
     }
 
-    public function setAdpositionsType($adpositions_type): void {
+    public function setAdpositionsType(?string $adpositions_type): Entry {
         $this->adpositions_type = $adpositions_type;
+        return $this;
     }
 
-    public function getNumeralsType() {
+    public function getNumeralsType(): ?string {
         return $this->numerals_type;
     }
 
-    public function setNumeralsType($numerals_type): void {
+    public function setNumeralsType(?string $numerals_type): Entry {
         $this->numerals_type = $numerals_type;
+        return $this;
     }
 
-    public function getAffixesType() {
+    public function getAffixesType(): ?string {
         return $this->affixes_type;
     }
 
-    public function setAffixesType($affixes_type): void {
+    public function setAffixesType(?string $affixes_type): Entry {
         $this->affixes_type = $affixes_type;
+        return $this;
     }
 
-    public function getPartOfSpeech() {
+    public function getPartOfSpeech(): ?string {
         return $this->part_of_speech;
     }
 
-    public function setPartOfSpeech($part_of_speech): void {
+    public function setPartOfSpeech(?string $part_of_speech): Entry {
         $this->part_of_speech = $part_of_speech;
+        return $this;
     }
 
-    public function getVerbalRoots() {
+    public function getVerbalRoots(): ?string {
         return $this->verbal_roots;
     }
 
-    public function setVerbalRoots($verbal_roots): void {
+    public function setVerbalRoots(?string $verbal_roots): Entry {
         $this->verbal_roots = $verbal_roots;
-    }
-
-    public function getLanguage(): ?Language
-    {
-        return $this->language;
-    }
-
-    public function setLanguage(?Language $language): static
-    {
-        $this->language = $language;
-
         return $this;
     }
 }
