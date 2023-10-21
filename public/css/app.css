@@ -2,6 +2,10 @@ body {
     background-color: #6a6a6a;
 }
 
+.bi {
+    color: white;
+}
+
 .form-control {
     color: #f2f2f2 !important;
 }

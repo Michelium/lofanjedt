@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lofanjedt - {{ title|default('') }}</title>
-    <link rel="stylesheet" href="/css/app.css?v={{ version }}">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="/css/select2.min.css">
-    <link rel="stylesheet" href="/css/select2-bootstrap-5-theme.min.css"/>
-    <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/jquery-3.5.1.js"></script>
-    <script src="/js/jquery.dataTables.min.js"></script>
-    <script src="/js/dataTables.bootstrap5.min.js"></script>
-    <script src="/js/select2.min.js"></script>
-    <script src="/js/app.js?v={{ version }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css?v='~version) }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2-bootstrap-5-theme.min.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/bootstrap-icons.css') }}">
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/app.js?v='~version) }}"></script>
     {% block stylesheets %}
     {% endblock %}
     {% block javascripts %}
