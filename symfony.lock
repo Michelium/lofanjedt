@@ -123,9 +123,6 @@
     "myclabs/deep-copy": {
         "version": "1.10.2"
     },
-    "myclabs/php-enum": {
-        "version": "1.8.3"
-    },
     "nikic/php-parser": {
         "version": "v4.12.0"
     },
@@ -146,9 +143,6 @@
     },
     "phpoffice/phpspreadsheet": {
         "version": "1.18.0"
-    },
-    "phpspec/prophecy": {
-        "version": "1.13.0"
     },
     "phpunit/php-code-coverage": {
         "version": "9.2.6"
