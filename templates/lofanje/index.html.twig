@@ -1,35 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-12">
-            {% if app.user.granted('ROLE_ADMIN') %}
-                <div class="float-end">
-                    <button type="button" class="btn btn-outline-warning export-modal-button mx-2" data-bs-toggle="modal" data-bs-target="#exportModal" data-id="0">export data</button>
-                    <button type="button" class="btn btn-outline-success form-modal-button" data-bs-toggle="modal" data-bs-target="#formModal" data-id="0">new entry</button>
-                </div>
-            {% endif %}
-            <h3>oi lofanje gambinosteda resjape</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-3">
-            <label for="category-select">choose a category</label>
-            <select name="category-select" id="category-select" class="form-control mt-2">
-                {% for category in categories %}
-                    <option value="{{ category }}">{{ category }}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-12">
-            <main></main>
-        </div>
-    </div>
+	{% if user_language is not null %}
+		<div class="row">
+			<div class="col-12">
+				{% if app.user.granted('ROLE_ADMIN') %}
+					<div class="float-end">
+						<button type="button" class="btn btn-outline-warning export-modal-button mx-2" data-bs-toggle="modal" data-bs-target="#exportModal" data-id="0">export data</button>
+						<button type="button" class="btn btn-outline-success form-modal-button" data-bs-toggle="modal" data-bs-target="#formModal" data-id="0">new entry</button>
+					</div>
+				{% endif %}
+				<h3>oi lofanje gambinosteda resjape</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-3">
+				<label for="category-select">choose a category</label>
+				<select name="category-select" id="category-select" class="form-control mt-2">
+					{% for category in categories %}
+						<option value="{{ category }}">{{ category }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-12">
+				<main></main>
+			</div>
+		</div>
 
-    {% include 'lofanje/modal.html.twig' %}
-    {% include 'lofanje/_export.modal.html.twig' %}
+		{% include 'lofanje/modal.html.twig' %}
+		{% include 'lofanje/_export.modal.html.twig' %}
+	{% endif %}
 
 {% endblock %}

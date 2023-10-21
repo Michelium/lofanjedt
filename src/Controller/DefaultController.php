@@ -33,6 +33,15 @@ class DefaultController extends AbstractController {
      * @Route("/lofanje", name="lofanje")
      */
     public function lofanje(Request $request): Response {
+        $userLanguage = $this->getUser()->getLanguage();
+        if ($userLanguage === null) {
+            $this->addFlash('danger', 'please choose your language');
+        }
+        
+        if ($userLanguage) {
+            $totalEntries = $this->entryRepository->getTotalEntries($userLanguage);
+        }
+        
         $entry = new Entry();
         $form = $this->createForm(EntryType::class, $entry);
         $form->handleRequest($request);
@@ -49,7 +58,8 @@ class DefaultController extends AbstractController {
             'title' => 'lofanje',
             'categories' => Entry::CATEGORIES,
             'form' => $form->createView(),
-            'totalEntries' => $this->entryRepository->getTotalEntries(),
+            'totalEntries' => $totalEntries ?? 0,
+            'user_language' => $userLanguage,
         ]);
     }
 
@@ -57,8 +67,10 @@ class DefaultController extends AbstractController {
      * @Route("/lofanje/get-table", name="lofanje_get_table")
      */
     public function getTable(Request $request): JsonResponse {
+        $userLanguage = $this->getUser()->getLanguage();
         $category = $request->get('category');
-        $entries = $this->entityManager->getRepository(Entry::class)->findBy(['view_status' => 5, 'category' => $category]);
+        
+        $entries = $this->entityManager->getRepository(Entry::class)->findBy(['view_status' => 5, 'category' => $category, 'language' => $userLanguage]);
 
         return new JsonResponse($this->renderView('lofanje/_table.html.twig', [
             'fields' => Entry::FIELDS[$category],
@@ -75,6 +87,7 @@ class DefaultController extends AbstractController {
 
         if (!$entry) {
             $entry = $form->getData();
+            $entry->setLanguage($this->getUser()->getLanguage());
         } else {
             $entry->setModifiedAt(new \DateTime('now'));
         }

@@ -37,7 +37,7 @@
 								{% if languages.languages %}
 									<div class="dropdown">
 										<button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownLanguageMenu" data-bs-toggle="dropdown" aria-expanded="false">
-											{{ app.user.language.name|default('Change language') }}
+											{{ app.user.language.name|default('choose language') }}
 										</button>
 										<ul class="dropdown-menu" aria-labelledby="dropdownLanguageMenu">
 											{% for language in languages.languages %}
@@ -69,7 +69,7 @@
             <div class="card mt-2 mt-md-4 p-3">
                 <nav class="row">
                     <div class="col-12">
-                        {% if totalEntries is defined %}
+                        {% if totalEntries is defined and totalEntries != 0 %}
                             <p>total entries: {{ totalEntries }}</p>
                         {% endif %}
                         <div>

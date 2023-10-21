@@ -23,7 +23,7 @@ final class Version20231021130431 extends AbstractMigration
         $this->addSql('ALTER TABLE entry ADD language_id INT DEFAULT NULL AFTER id');
         $this->addSql('ALTER TABLE entry ADD CONSTRAINT FK_2B219D7082F1BAF4 FOREIGN KEY (language_id) REFERENCES language (id)');
         $this->addSql('CREATE INDEX IDX_2B219D7082F1BAF4 ON entry (language_id)');
-        $this->addSql("INSERT INTO `language` (`id`, `name`) VALUES (1, 'Gambinoste'), (2, 'Arnaktis')");
+        $this->addSql("INSERT INTO `language` (`id`, `name`) VALUES (1, 'Gambinian'), (2, 'Arnaktis')");
         $this->addSql('UPDATE `entry` SET language_id = 1;');
     }
 

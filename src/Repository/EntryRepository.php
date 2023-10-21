@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Entry;
+use App\Entity\Language;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\expr;
@@ -44,10 +45,12 @@ class EntryRepository extends ServiceEntityRepository {
         return $qb->getQuery()->getResult();
     }
 
-    public function getTotalEntries(): ?int {
+    public function getTotalEntries(Language $language): ?int {
         $qb = $this->createQueryBuilder('e');
         $qb->select('COUNT(e.id)');
         $qb->andWhere('e.view_status = 5');
+        $qb->andWhere('e.language = :language');
+        $qb->setParameter('language', $language);
         $qb->andWhere($qb->expr()->notIn('e.category', ['Daitic (obsolete)', 'Codian (obsolete)']));
 
         return $qb->getQuery()->getSingleScalarResult();

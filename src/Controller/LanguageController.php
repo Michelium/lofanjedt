@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Language;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/lofanje')]
@@ -16,7 +17,7 @@ class LanguageController extends AbstractController {
     }
 
     #[Route('/set-language/{language}', name: 'lofanje_set_language')]
-    public function setUserLanguage(Language $language) {
+    public function setUserLanguage(Language $language): RedirectResponse {
         $user = $this->getUser();
         
         $user->setLanguage($language);
