@@ -1,17 +1,27 @@
-body {
-    background-color: #6a6a6a;
+:root {
+    --background: #242A38;
+    --card-background: #1A1C28;
+    --text: #EAEAEA;
 }
 
-.bi {
-    color: white;
+body {
+    background: linear-gradient(to right, #242A38, #1A1F2A);
+}
+
+.card {
+    background-color: var(--card-background);
+}
+
+h3 {
+    color: var(--text);
 }
 
 .form-control {
-    color: #f2f2f2 !important;
+    color: var(--text) !important;
 }
 
 .form-select {
-    color: #f2f2f2 !important;
+    color: var(--text) !important;
 }
 
 .form-label:after {
